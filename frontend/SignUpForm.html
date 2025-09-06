@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>SynergySphere - Sign Up</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style type="text/tailwindcss">
+        :root {
+        --primary-50: #f0fdf6;
+        --primary-100: #dcfce9;
+        --primary-200: #bbf7d4;
+        --primary-300: #86efb0;
+        --primary-400: #4ade8a;
+        --primary-500: #22c55e;
+        --primary-600: #16a34a;
+        --primary-700: #15803d;
+        --primary-800: #166534;
+        --primary-900: #14532d;
+        --primary-950: #052e16;
+      }
+      body {
+        font-family: "Spline Sans", sans-serif;
+      }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white antialiased">
+    <div class="flex h-screen w-full flex-col">
+        <header class="flex items-center justify-center px-4 py-6 sm:px-6">
+            <a class="flex items-center gap-3" href="#">
+                <svg class="h-8 w-8 text-[var(--primary-400)]" fill="none" viewBox="0 0 48 48"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z"
+                        fill="currentColor"></path>
+                </svg>
+                <h1 class="text-2xl font-bold tracking-tight">SynergySphere</h1>
+            </a>
+        </header>
+        <main class="flex flex-1 items-center justify-center py-12 px-4 sm:px-6">
+            <div class="w-full max-w-md space-y-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Create your account</h2>
+                    <p class="mt-2 text-lg text-gray-400">And start collaborating in minutes.</p>
+                </div>
+                <form class="space-y-6 rounded-2xl bg-gray-800/50 p-8 shadow-2xl backdrop-blur-sm">
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-gray-300" for="full-name">Full Name</label>
+                        <input
+                            class="form-input w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
+                            id="full-name" name="full-name" placeholder="Your Name" required="" type="text" />
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-gray-300" for="email">Email address</label>
+                        <input autocomplete="email"
+                            class="form-input w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
+                            id="email" name="email" placeholder="you@example.com" required="" type="email" />
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-gray-300" for="password">Password</label>
+                        <input autocomplete="new-password"
+                            class="form-input w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
+                            id="password" name="password" placeholder="••••••••" required="" type="password" />
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-gray-300" for="confirm-password">Confirm Password</label>
+                        <input autocomplete="new-password"
+                            class="form-input w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
+                            id="confirm-password" name="confirm-password" placeholder="••••••••" required=""
+                            type="password" />
+                    </div>
+                    <div>
+                        <button
+                            class="w-full rounded-full bg-[var(--primary-500)] px-5 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-[var(--primary-600)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-500)]"
+                            type="submit">
+                            Sign Up
+                        </button>
+                    </div>
+                </form>
+                <p class="text-center text-sm text-gray-400">
+                    Already have an account?
+                    <a class="font-medium text-[var(--primary-400)] hover:text-[var(--primary-300)]" href="#">Log In</a>
+                </p>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
