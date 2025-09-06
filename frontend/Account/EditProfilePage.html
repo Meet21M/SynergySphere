@@ -12,59 +12,98 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style type="text/tailwindcss">
         :root {
-        --primary-50: #f0fdf6;
-        --primary-100: #dcfce9;
-        --primary-200: #bbf7d4;
-        --primary-300: #86efb0;
-        --primary-400: #4ade8a;
-        --primary-500: #22c55e;
-        --primary-600: #16a34a;
-        --primary-700: #15803d;
-        --primary-800: #166534;
-        --primary-900: #14532d;
-        --primary-950: #052e16;
-      }
-      body {
-        font-family: "Spline Sans", sans-serif;
-      }
+            --primary-50: #f0fdf6;
+            --primary-100: #dcfce9;
+            --primary-200: #bbf7d4;
+            --primary-300: #86efb0;
+            --primary-400: #4ade8a;
+            --primary-500: #22c55e;
+            --primary-600: #16a34a;
+            --primary-700: #15803d;
+            --primary-800: #166534;
+            --primary-900: #14532d;
+            --primary-950: #052e16;
+        }
+
+        body {
+            font-family: "Spline Sans", sans-serif;
+        }
+        
+        .form-input {
+             @apply w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)];
+        }
     </style>
 </head>
 
 <body class="bg-gray-900 antialiased">
-    <div class="relative flex size-full min-h-screen flex-col text-white group/design-root overflow-x-hidden"
-        style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+    <div class="relative flex size-full min-h-screen flex-col text-white group/design-root overflow-x-hidden">
         <div class="layout-container flex h-full grow flex-col">
-            <header
-                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-800 px-10 py-3">
-                <div class="flex items-center gap-4 text-white">
-                    <a class="flex items-center gap-3" href="ProjectDashboardPage.html">
-                        <div class="size-6 text-[var(--primary-400)]">
-                            <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z"
-                                    fill="currentColor"></path>
-                            </svg>
-                        </div>
-                        <h2 class="text-xl font-bold tracking-tight">SynergySphere</h2>
-                    </a>
-                </div>
-                <nav class="flex items-center gap-8 text-sm font-medium text-gray-400">
-                    <a class="hover:text-white" href="ProjectDashboardPage.html">Dashboard</a>
-                    <a class="hover:text-white" href="ProjectListPage.html">Projects</a>
-                    <a class="hover:text-white" href="UserTaskDashboardPage.html">Tasks</a>
-                    <a class="hover:text-white" href="#">Team</a>
+           <header class="sticky top-0 z-30 flex items-center justify-between whitespace-nowrap border-b border-gray-800 bg-gray-900/80 px-4 py-3 sm:px-10 backdrop-blur-sm">
+                <a class="flex items-center gap-3 text-white" href="ProjectDashboardPage.html">
+                    <svg class="h-7 w-7 text-primary-400" fill="none" viewBox="0 0 48 48"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z"
+                            fill="currentColor"></path>
+                    </svg>
+                    <h2 class="text-xl font-bold tracking-tight">SynergySphere</h2>
+                </a>
+                
+                <nav class="hidden md:flex items-center gap-6">
+                    <a class="text-gray-400 hover:text-white text-sm font-medium leading-normal transition-colors" href="ProjectDashboardPage.html">Dashboard</a>
+                    <a class="text-gray-400 hover:text-white text-sm font-medium leading-normal transition-colors" href="ProjectListPage.html">Projects</a>
+                    <a class="text-gray-400 hover:text-white text-sm font-medium leading-normal transition-colors" href="UserTaskDashboardPage.html">Tasks</a>
+                    <a class="text-gray-400 hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Team</a>
                 </nav>
-                <div class="flex items-center gap-4">
-                    <button class="relative rounded-full p-2 text-gray-400 hover:bg-gray-800 hover:text-white">
-                        <span class="material-symbols-outlined"> notifications </span>
+                
+                <div class="flex items-center justify-end gap-4">
+                    <div class="hidden md:flex items-center gap-4">
+                        <button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-2xl">notifications</span>
+                        </button>
+                        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+                            style='background-image: url("https://i.pravatar.cc/40?u=sophiacarter");'>
+                        </div>
+                    </div>
+                    <button id="open-menu-btn"
+                        class="flex md:hidden h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-2xl">menu</span>
                     </button>
-                    <div class="size-10 rounded-full bg-cover bg-center"
-                        style='background-image: url("https://i.pravatar.cc/40?u=currentuser");'></div>
                 </div>
             </header>
+
+            <div id="menu-overlay" class="fixed inset-0 z-40 hidden bg-black/60 backdrop-blur-sm"></div>
+            <div id="mobile-menu"
+                class="fixed right-0 top-0 z-50 flex h-full w-full max-w-sm transform flex-col bg-gray-800 shadow-xl transition-transform duration-300 ease-in-out translate-x-full">
+                <div class="flex items-center justify-between border-b border-gray-700 p-4">
+                    <h3 class="text-lg font-bold text-white">Menu</h3>
+                    <button id="close-menu-btn"
+                        class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-700 hover:text-white">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                <div class="flex flex-col flex-grow p-4 space-y-4">
+                    <nav class="flex flex-col gap-2">
+                        <a class="rounded-lg px-3 py-2 text-base font-medium text-gray-300 transition-colors hover:bg-gray-700 hover:text-white" href="ProjectDashboardPage.html">Dashboard</a>
+                        <a class="rounded-lg px-3 py-2 text-base font-medium text-gray-300 transition-colors hover:bg-gray-700 hover:text-white" href="ProjectListPage.html">Projects</a>
+                        <a class="rounded-lg px-3 py-2 text-base font-medium text-gray-300 transition-colors hover:bg-gray-700 hover:text-white" href="UserTaskDashboardPage.html">Tasks</a>
+                        <a class="rounded-lg px-3 py-2 text-base font-medium text-gray-300 transition-colors hover:bg-gray-700 hover:text-white" href="#">Team</a>
+                    </nav>
+                </div>
+                 <div class="border-t border-gray-700 p-4">
+                    <a href="#" class="flex items-center gap-4 rounded-lg">
+                        <div class="h-12 w-12 flex-shrink-0 rounded-full bg-cover bg-center" style='background-image: url("https://i.pravatar.cc/48?u=sophiacarter");'></div>
+                        <div>
+                            <p class="font-bold text-white">Sophia Carter</p>
+                            <p class="text-sm text-gray-400 hover:text-primary-400">View Profile</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
             <main class="flex-1 px-4 sm:px-6 lg:px-8 py-10">
                 <div class="mx-auto max-w-2xl">
-                    <div class="bg-gray-800 rounded-lg shadow-lg p-8">
+                    <div class="bg-gray-800/50 rounded-2xl shadow-2xl p-8 backdrop-blur-sm">
                         <div class="text-center mb-8">
                             <h1 class="text-4xl font-bold text-white tracking-tight">Profile & Settings</h1>
                         </div>
@@ -72,34 +111,27 @@
                             <div class="relative">
                                 <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-32 h-32"
                                     style='background-image: url("https://i.pravatar.cc/128?u=sophiacarter");'></div>
-                                <button
-                                    class="absolute bottom-0 right-0 bg-[var(--primary-500)] text-white rounded-full p-2 hover:bg-[var(--primary-600)] transition-colors">
-                                    <span class="material-symbols-outlined"> photo_camera </span>
+                                <button class="absolute bottom-0 right-0 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--primary-500)] text-white transition-colors hover:bg-[var(--primary-600)]">
+                                    <span class="sr-only">Change profile picture</span>
+                                    <span class="material-symbols-outlined text-xl"> photo_camera </span>
                                 </button>
                             </div>
                             <div class="text-center w-full">
-                                <div class="space-y-4">
+                                <form class="space-y-4">
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-400 text-left"
-                                            for="name">Name</label>
-                                        <input
-                                            class="mt-1 block w-full bg-gray-700 border-transparent rounded-md text-white placeholder-gray-400 focus:ring-0 focus:border-[var(--primary-500)] sm:text-lg"
-                                            id="name" type="text" value="Sophia Carter" />
+                                        <label class="block text-sm font-medium text-gray-300 text-left" for="name">Name</label>
+                                        <input class="form-input mt-1" id="name" type="text" value="Sophia Carter" />
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-400 text-left"
-                                            for="email">Email</label>
-                                        <input
-                                            class="mt-1 block w-full bg-gray-700 border-transparent rounded-md text-white placeholder-gray-400 focus:ring-0 focus:border-[var(--primary-500)] sm:text-base"
-                                            id="email" type="email" value="sophia.carter@email.com" />
+                                        <label class="block text-sm font-medium text-gray-300 text-left" for="email">Email</label>
+                                        <input class="form-input mt-1" id="email" type="email" value="sophia.carter@email.com" />
                                     </div>
-                                    <div class="pt-4">
-                                        <button
-                                            class="w-full flex items-center justify-center gap-2 min-w-[84px] cursor-pointer rounded-md h-12 px-4 bg-[var(--primary-500)] text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-[var(--primary-600)] transition-colors">
-                                            <span>Save Changes</span>
+                                    <div class="pt-4 flex justify-end">
+                                        <button class="rounded-full bg-[var(--primary-500)] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[var(--primary-600)]" type="submit">
+                                            Save Changes
                                         </button>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                         <div class="border-t border-gray-700 pt-8">
@@ -108,47 +140,37 @@
                                 <div class="flex items-center justify-between">
                                     <div class="flex flex-col">
                                         <p class="text-base font-medium text-white">Task Assignments</p>
-                                        <p class="text-sm text-gray-400">Receive notifications for new tasks assigned to
-                                            you.</p>
+                                        <p class="text-sm text-gray-400">Receive notifications for new tasks assigned to you.</p>
                                     </div>
                                     <label class="relative inline-flex items-center cursor-pointer">
                                         <input class="sr-only peer" type="checkbox" value="" />
-                                        <div
-                                            class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--primary-500)]">
-                                        </div>
+                                        <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--primary-500)]"></div>
                                     </label>
                                 </div>
                                 <div class="flex items-center justify-between">
                                     <div class="flex flex-col">
                                         <p class="text-base font-medium text-white">Task Updates</p>
-                                        <p class="text-sm text-gray-400">Get notified when a task you're involved in is
-                                            updated.</p>
+                                        <p class="text-sm text-gray-400">Get notified when a task you're involved in is updated.</p>
                                     </div>
                                     <label class="relative inline-flex items-center cursor-pointer">
-                                        <input checked="" class="sr-only peer" type="checkbox" value="" />
-                                        <div
-                                            class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--primary-500)]">
-                                        </div>
+                                        <input checked class="sr-only peer" type="checkbox" value="" />
+                                        <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--primary-500)]"></div>
                                     </label>
                                 </div>
                                 <div class="flex items-center justify-between">
                                     <div class="flex flex-col">
                                         <p class="text-base font-medium text-white">Project Deadlines</p>
-                                        <p class="text-sm text-gray-400">Receive alerts for upcoming project deadlines.
-                                        </p>
+                                        <p class="text-sm text-gray-400">Receive alerts for upcoming project deadlines.</p>
                                     </div>
                                     <label class="relative inline-flex items-center cursor-pointer">
                                         <input class="sr-only peer" type="checkbox" value="" />
-                                        <div
-                                            class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--primary-500)]">
-                                        </div>
+                                        <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--primary-500)]"></div>
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <div class="border-t border-gray-700 mt-10 pt-8 flex justify-end">
-                            <button
-                                class="flex items-center gap-2 min-w-[84px] cursor-pointer justify-center rounded-md h-10 px-4 bg-gray-700 text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-red-800/50 hover:text-red-400 transition-colors">
+                            <button class="flex items-center gap-2 min-w-[84px] cursor-pointer justify-center rounded-md h-10 px-4 bg-gray-700/50 text-gray-300 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-red-800/50 hover:text-red-400 transition-colors">
                                 <span class="material-symbols-outlined"> logout </span>
                                 <span class="truncate">Log Out</span>
                             </button>
@@ -158,6 +180,27 @@
             </main>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const openMenuBtn = document.getElementById('open-menu-btn');
+            const closeMenuBtn = document.getElementById('close-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOverlay = document.getElementById('menu-overlay');
+            const openMenu = () => {
+                mobileMenu.classList.remove('translate-x-full');
+                menuOverlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeMenu = () => {
+                mobileMenu.classList.add('translate-x-full');
+                menuOverlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            };
+            if (openMenuBtn) openMenuBtn.addEventListener('click', openMenu);
+            if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+            if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+        });
+    </script>
 </body>
 
 </html>
