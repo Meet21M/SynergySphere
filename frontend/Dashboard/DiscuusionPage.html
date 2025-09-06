@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>SynergySphere - Discussions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link as="style"
+        href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&family=Spline+Sans%3Awght%40400%3B500%3B700"
+        onload="this.rel='stylesheet'" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style type="text/tailwindcss">
+        :root {
+            --primary-50: #f0fdf6;
+            --primary-100: #dcfce9;
+            --primary-200: #bbf7d4;
+            --primary-300: #86efb0;
+            --primary-400: #4ade8a;
+            --primary-500: #22c55e;
+            --primary-600: #16a34a;
+            --primary-700: #15803d;
+            --primary-800: #166534;
+            --primary-900: #14532d;
+            --primary-950: #052e16;
+        }
+
+        body {
+            font-family: "Spline Sans", sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white antialiased">
+    <div class="relative flex size-full min-h-screen flex-col overflow-x-hidden"
+        style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+        <div class="flex flex-1 h-screen">
+            <aside class="hidden lg:flex w-64 flex-col bg-gray-800 p-6 shrink-0">
+                <div class="flex items-center gap-3 mb-8">
+                    <div
+                        class="w-10 h-10 bg-[var(--primary-500)] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                        S</div>
+                    <h1 class="text-white text-xl font-bold">SynergySphere</h1>
+                </div>
+                <nav class="flex flex-col gap-2 flex-grow">
+                    <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
+                        href="ProjectDashboardPage.html">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        <span class="text-sm font-medium">Dashboard</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
+                        href="UserTaskDashboardPage.html">
+                        <span class="material-symbols-outlined">check_box</span>
+                        <span class="text-sm font-medium">My Tasks</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
+                        href="ProjectListPage.html">
+                        <span class="material-symbols-outlined">folder</span>
+                        <span class="text-sm font-medium">Projects</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-white bg-gray-700 rounded-lg transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined">forum</span>
+                        <span class="text-sm font-medium">Discussion</span>
+                    </a>
+                </nav>
+                <div class="flex flex-col gap-4">
+                    <a href="AddProject.html"
+                        class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-6 bg-[var(--primary-500)] text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[var(--primary-600)] transition-colors">
+                        <span class="truncate">New Project</span>
+                    </a>
+                    <div class="border-t border-gray-700 my-2"></div>
+                    <a href="../Account/ProfilePage.html"
+                        class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-700">
+                        <img alt="User avatar" class="w-10 h-10 rounded-full object-cover"
+                            src="https://i.pravatar.cc/40?u=currentuser" />
+                        <div class="flex flex-col">
+                            <p class="text-white font-semibold">Current User</p>
+                            <p class="text-gray-400 text-sm">View Profile</p>
+                        </div>
+                    </a>
+                </div>
+            </aside>
+
+            <div class="flex flex-1 flex-col">
+                <header
+                    class="sticky top-0 z-10 flex items-center justify-between whitespace-nowrap border-b border-gray-800 bg-gray-900/80 px-4 py-3 sm:px-10 backdrop-blur-sm">
+                    <div class="flex items-center gap-4">
+                        <button id="open-menu-btn"
+                            class="flex lg:hidden h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
+                            <span class="sr-only">Open menu</span>
+                            <span class="material-symbols-outlined text-2xl">menu</span>
+                        </button>
+                        <div>
+                            <h2 class="text-white text-xl font-bold"># project-alpha</h2>
+                            <p class="text-sm text-gray-400">Thread: Project Kickoff</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-end gap-2">
+                        <button
+                            class="text-gray-400 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors"><span
+                                class="material-symbols-outlined">search</span></button>
+                        <button
+                            class="text-gray-400 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors"><span
+                                class="material-symbols-outlined">notifications</span></button>
+                    </div>
+                </header>
+                <main class="flex flex-1 flex-col bg-gray-900">
+                    <div class="flex-1 overflow-y-auto p-6 space-y-6">
+                        <div class="flex items-start gap-4">
+                            <img class="w-10 h-10 rounded-full shrink-0" src="https://i.pravatar.cc/40?u=sarahchen"
+                                alt="Sarah Chen avatar" />
+                            <div class="flex-1 space-y-1">
+                                <div class="flex items-baseline gap-2">
+                                    <p class="font-semibold text-white">Sarah Chen</p>
+                                    <p class="text-xs text-gray-500">10:00 AM</p>
+                                </div>
+                                <div class="rounded-lg rounded-tl-none bg-gray-700 px-4 py-2 text-white">
+                                    <p>Hi team, let's use this thread to discuss the kickoff meeting for Project Alpha.
+                                        Please share your availability for next week.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <img class="w-10 h-10 rounded-full shrink-0" src="https://i.pravatar.cc/40?u=alexjohnson"
+                                alt="Alex Johnson avatar" />
+                            <div class="flex-1 space-y-1">
+                                <div class="flex items-baseline gap-2">
+                                    <p class="font-semibold text-white">Alex Johnson</p>
+                                    <p class="text-xs text-gray-500">10:05 AM</p>
+                                </div>
+                                <div class="rounded-lg rounded-tl-none bg-gray-700 px-4 py-2 text-white">
+                                    <p>I'm available on Tuesday and Thursday afternoons.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 justify-end">
+                            <div class="flex-1 space-y-1 max-w-lg text-right">
+                                <div class="flex items-baseline justify-end gap-2">
+                                    <p class="font-semibold text-white">Emily White</p>
+                                    <p class="text-xs text-gray-500">10:10 AM</p>
+                                </div>
+                                <div
+                                    class="inline-block rounded-lg rounded-tr-none bg-[var(--primary-600)] px-4 py-2 text-white text-left">
+                                    <p>I can make Wednesday morning or Friday afternoon work.</p>
+                                </div>
+                            </div>
+                            <img class="w-10 h-10 rounded-full shrink-0" src="https://i.pravatar.cc/40?u=emilywhite"
+                                alt="Emily White avatar" />
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <img class="w-10 h-10 rounded-full shrink-0" src="https://i.pravatar.cc/40?u=alexjohnson"
+                                alt="Alex Johnson avatar" />
+                            <div class="flex-1 space-y-1">
+                                <div class="flex items-baseline gap-2">
+                                    <p class="font-semibold text-white">Alex Johnson</p>
+                                    <p class="text-xs text-gray-500">10:15 AM</p>
+                                </div>
+                                <div class="rounded-lg rounded-tl-none bg-gray-700 px-4 py-2 text-white">
+                                    <p>Great, let's aim for Tuesday afternoon then. Sarah, can you send out a calendar
+                                        invite?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-700 bg-gray-800 p-4">
+                        <div class="relative">
+                            <input
+                                class="w-full rounded-full bg-gray-700 py-3 pl-5 pr-32 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)]"
+                                placeholder="Type a message..." type="text" />
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-2">
+                                <button
+                                    class="rounded-full p-2 text-gray-400 transition-colors hover:bg-gray-600 hover:text-white"><span
+                                        class="material-symbols-outlined"> sentiment_satisfied </span></button>
+                                <button
+                                    class="rounded-full p-2 text-gray-400 transition-colors hover:bg-gray-600 hover:text-white"><span
+                                        class="material-symbols-outlined"> attach_file </span></button>
+                                <button
+                                    class="ml-2 rounded-full bg-[var(--primary-500)] p-2 text-white transition-colors hover:bg-[var(--primary-600)]"><span
+                                        class="material-symbols-outlined"> send </span></button>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <div id="menu-overlay" class="fixed inset-0 z-40 hidden bg-black/60 backdrop-blur-sm lg:hidden"></div>
+        <div id="mobile-menu"
+            class="fixed left-0 top-0 z-50 flex h-full w-full max-w-xs transform flex-col bg-gray-800 shadow-xl transition-transform duration-300 ease-in-out -translate-x-full lg:hidden">
+            <div class="flex items-center justify-between border-b border-gray-700 p-4">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-8 h-8 bg-[var(--primary-500)] rounded-full flex items-center justify-center text-white font-bold text-base">
+                        S </div>
+                    <h2 class="text-lg font-bold text-white">SynergySphere</h2>
+                </div>
+                <button id="close-menu-btn"
+                    class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-700 hover:text-white">
+                    <span class="sr-only">Close menu</span>
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="flex flex-col flex-grow p-4 space-y-2">
+                <nav class="flex flex-col gap-2 flex-grow">
+                    <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
+                        href="ProjectDashboardPage.html">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        <span class="text-sm font-medium">Dashboard</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
+                        href="UserTaskDashboardPage.html">
+                        <span class="material-symbols-outlined">check_box</span>
+                        <span class="text-sm font-medium">My Tasks</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
+                        href="ProjectListPage.html">
+                        <span class="material-symbols-outlined">folder</span>
+                        <span class="text-sm font-medium">Projects</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-white bg-gray-700 rounded-lg transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined">forum</span>
+                        <span class="text-sm font-medium">Discussion</span>
+                    </a>
+                </nav>
+            </div>
+            <div class="border-t border-gray-700 p-4">
+                <a href="../Account/ProfilePage.html" class="flex items-center gap-4 rounded-lg p-2 hover:bg-gray-700">
+                    <img alt="User avatar" class="h-10 w-10 flex-shrink-0 rounded-full bg-cover bg-center"
+                        src="https://i.pravatar.cc/40?u=currentuser" />
+                    <div>
+                        <p class="font-bold text-white">Current User</p>
+                        <p class="text-sm text-gray-400">View Profile</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const openMenuBtn = document.getElementById('open-menu-btn');
+            const closeMenuBtn = document.getElementById('close-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOverlay = document.getElementById('menu-overlay');
+            const openMenu = () => {
+                mobileMenu.classList.remove('-translate-x-full');
+                menuOverlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeMenu = () => {
+                mobileMenu.classList.add('-translate-x-full');
+                menuOverlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            };
+            if (openMenuBtn) openMenuBtn.addEventListener('click', openMenu);
+            if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+            if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+        });
+    </script>
+</body>
+
+</html>
