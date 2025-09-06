@@ -9,13 +9,13 @@ items = []
 
 @router.get("/items", response_model=list[ItemResponse])
 async def get_items():
-    return items
+    return [item.dict() for item in items]
 
 @router.post("/items", response_model=ItemResponse)
 async def create_item(item: ItemCreate):
     new_item = Item(id=len(items) + 1, **item.dict())
     items.append(new_item)
-    return new_item
+    return new_item.dict()
 
 @router.get("/items/{item_id}", response_model=ItemResponse)
 async def get_item(item_id: int):
