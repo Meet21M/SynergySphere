@@ -14,3 +14,12 @@ class User(Base):
     isDeleted = Column(Boolean,default=False,nullable=False)
     createdAt = Column(DateTime,default=datetime.now,nullable=False)
     modifiedAt = Column(DateTime,default=datetime.now,onupdate=datetime.now,nullable=False)
+
+class OTP(Base):
+    __tablename__ = "otp_details"
+    id = Column(String(100),default=str(uuid.uuid4()),primary_key=True,nullable=False)
+    user_id = Column(String(100),ForeignKey("users.user_id"),nullable=False)
+    email = Column(String(100),nullable=False)
+    otp = Column(String(100),nullable=False)
+    createdAt = Column(DateTime,default=datetime.now,nullable=False)
+    modifiedAt = Column(DateTime,default=datetime.now,onupdate=datetime.now,nullable=False)
