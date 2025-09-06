@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>SynergySphere - My Tasks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
     <link as="style"
         href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&family=Spline+Sans%3Awght%40400%3B500%3B700"
@@ -12,48 +13,31 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style type="text/tailwindcss">
         :root {
-        --primary-50: #f0fdf4;
-        --primary-100: #dcfce7;
-        --primary-200: #bbf7d0;
-        --primary-300: #86efac;
-        --primary-400: #4ade80;
-        --primary-500: #22c55e;
-        --primary-600: #16a34a;
-        --primary-700: #15803d;
-        --primary-800: #166534;
-        --primary-900: #14532d;
-        --primary-950: #052e16;
-      }
+            --primary-50: #f0fdf4; --primary-100: #dcfce7; --primary-200: #bbf7d0; --primary-300: #86efac; --primary-400: #4ade80; --primary-500: #22c55e; --primary-600: #16a34a; --primary-700: #15803d; --primary-800: #166534; --primary-900: #14532d; --primary-950: #052e16;
+        }
     </style>
 </head>
 
-<body class="bg-gray-900">
-    <div class="relative flex size-full min-h-screen flex-col overflow-x-hidden"
-        style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+<body class="bg-gray-900 text-white antialiased" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+    <div class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
         <div class="flex flex-1">
-            <aside class="flex w-64 flex-col bg-gray-800 p-6 shrink-0">
+            <aside class="hidden lg:flex w-64 flex-col bg-gray-800 p-6 shrink-0">
                 <div class="flex items-center gap-3 mb-8">
                     <div
                         class="w-10 h-10 bg-[var(--primary-500)] rounded-full flex items-center justify-center text-white font-bold text-lg">
-                        S
-                    </div>
+                        S</div>
                     <h1 class="text-white text-xl font-bold">SynergySphere</h1>
                 </div>
                 <nav class="flex flex-col gap-2 flex-grow">
                     <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
                         href="ProjectDashboardPage.html">
-                        <span class="material-symbols-outlined">home</span>
-                        <span class="text-sm font-medium">Home</span>
+                        <span class="material-symbols-outlined">dashboard</span>
+                        <span class="text-sm font-medium">Dashboard</span>
                     </a>
                     <a class="flex items-center gap-3 px-4 py-2 text-white bg-gray-700 rounded-lg transition-colors"
                         href="UserTaskDashboardPage.html">
                         <span class="material-symbols-outlined">check_box</span>
                         <span class="text-sm font-medium">My Tasks</span>
-                    </a>
-                    <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
-                        href="#">
-                        <span class="material-symbols-outlined">inbox</span>
-                        <span class="text-sm font-medium">Inbox</span>
                     </a>
                     <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
                         href="ProjectListPage.html">
@@ -62,43 +46,39 @@
                     </a>
                     <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
                         href="#">
-                        <span class="material-symbols-outlined">monitoring</span>
-                        <span class="text-sm font-medium">Reports</span>
+                        <span class="material-symbols-outlined">forum</span>
+                        <span class="text-sm font-medium">Discussion</span>
                     </a>
                 </nav>
                 <div class="flex flex-col gap-4">
-                    <button
+                    <a href="AddProject.html"
                         class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-6 bg-[var(--primary-500)] text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[var(--primary-600)] transition-colors">
                         <span class="truncate">New Project</span>
-                    </button>
-                    <div class="flex flex-col gap-1">
-                        <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white text-sm" href="#">
-                            <span class="material-symbols-outlined">group_add</span>
-                            <span class="font-medium">Invite Team</span>
-                        </a>
-                        <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white text-sm" href="#">
-                            <span class="material-symbols-outlined">help</span>
-                            <span class="font-medium">Help and Docs</span>
-                        </a>
-                    </div>
+                    </a>
                     <div class="border-t border-gray-700 my-2"></div>
-                    <div class="flex items-center gap-3 px-4 py-2">
+                    <a href="../Account/ProfilePage.html"
+                        class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-700">
                         <img alt="User avatar" class="w-10 h-10 rounded-full object-cover"
                             src="https://i.pravatar.cc/40?u=janedoe" />
                         <div class="flex flex-col">
                             <p class="text-white font-semibold">Jane Doe</p>
-                            <p class="text-gray-400 text-sm">jane.doe@synergy.co</p>
+                            <p class="text-gray-400 text-sm">View Profile</p>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </aside>
-            <main class="flex-1 p-8">
-                <div class="flex justify-between items-center mb-6">
-                    <div>
-                        <h2 class="text-white text-3xl font-bold">My Tasks</h2>
-                        <p class="text-gray-400 text-sm">View and manage your tasks across all projects</p>
+            <div class="flex flex-1 flex-col">
+                <header
+                    class="sticky top-0 z-10 flex items-center justify-between whitespace-nowrap border-b border-gray-800 bg-gray-900/80 px-4 py-3 sm:px-10 backdrop-blur-sm">
+                    <div class="flex items-center gap-4">
+                        <button id="open-menu-btn"
+                            class="flex lg:hidden h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
+                            <span class="sr-only">Open menu</span>
+                            <span class="material-symbols-outlined text-2xl">menu</span>
+                        </button>
+                        <h2 class="text-white text-2xl font-bold">My Tasks</h2>
                     </div>
-                    <div class="flex items-center gap-2">
+                    <div class="flex items-center justify-end gap-2">
                         <button
                             class="text-gray-400 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors"><span
                                 class="material-symbols-outlined">search</span></button>
@@ -106,122 +86,171 @@
                             class="text-gray-400 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors"><span
                                 class="material-symbols-outlined">notifications</span></button>
                     </div>
-                </div>
-                <div class="mb-6">
-                    <div class="flex border-b border-gray-700">
-                        <a class="flex items-center justify-center border-b-2 border-b-[var(--primary-500)] text-white py-3 px-4 text-sm font-bold"
-                            href="#">
-                            List
-                        </a>
-                        <a class="flex items-center justify-center border-b-2 border-b-transparent text-gray-400 py-3 px-4 text-sm font-bold hover:text-white"
-                            href="#">
-                            Board
-                        </a>
+                </header>
+                <main class="flex-1 p-4 sm:p-8">
+                    <p class="text-gray-400 text-sm mb-6">View and manage your tasks across all projects.</p>
+                    <div class="mb-6">
+                        <div class="flex border-b border-gray-700">
+                            <a class="flex items-center justify-center border-b-2 border-b-[var(--primary-500)] text-white py-3 px-4 text-sm font-bold"
+                                href="#">List</a>
+                            <a class="flex items-center justify-center border-b-2 border-b-transparent text-gray-400 py-3 px-4 text-sm font-bold hover:text-white transition-colors"
+                                href="#">Board</a>
+                        </div>
                     </div>
-                </div>
-                <div class="overflow-x-auto rounded-xl border border-gray-700 bg-gray-800">
-                    <table class="w-full text-left">
-                        <thead class="bg-gray-700/50">
-                            <tr>
-                                <th
-                                    class="px-6 py-4 text-left text-gray-300 text-xs font-medium uppercase tracking-wider">
-                                    Task</th>
-                                <th
-                                    class="px-6 py-4 text-left text-gray-300 text-xs font-medium uppercase tracking-wider">
-                                    Project</th>
-                                <th
-                                    class="px-6 py-4 text-left text-gray-300 text-xs font-medium uppercase tracking-wider">
-                                    Assignee</th>
-                                <th
-                                    class="px-6 py-4 text-left text-gray-300 text-xs font-medium uppercase tracking-wider">
-                                    Due Date</th>
-                                <th
-                                    class="px-6 py-4 text-left text-gray-300 text-xs font-medium uppercase tracking-wider">
-                                    Status</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-700">
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-white font-medium">Design landing page</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-400">Marketing</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <img alt="Assignee avatar" class="w-8 h-8 rounded-full object-cover"
-                                        src="https://i.pravatar.cc/32?u=assignee1" />
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-400">Sep 15, 2025</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span
-                                        class="px-3 py-1 text-xs font-medium rounded-full bg-yellow-500/20 text-yellow-300">In
-                                        Progress</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-white font-medium">Develop user dashboard
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-400">Product</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <img alt="Assignee avatar" class="w-8 h-8 rounded-full object-cover"
-                                        src="https://i.pravatar.cc/32?u=assignee2" />
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-400">Sep 20, 2025</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span
-                                        class="px-3 py-1 text-xs font-medium rounded-full bg-blue-500/20 text-blue-300">To
-                                        Do</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-white font-medium">Write blog post</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-400">Content</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <img alt="Assignee avatar" class="w-8 h-8 rounded-full object-cover"
-                                        src="https://i.pravatar.cc/32?u=assignee3" />
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-400">Sep 25, 2025</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span
-                                        class="px-3 py-1 text-xs font-medium rounded-full bg-green-500/20 text-green-300">Done</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-white font-medium">Prepare presentation</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-400">Sales</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <img alt="Assignee avatar" class="w-8 h-8 rounded-full object-cover"
-                                        src="https://i.pravatar.cc/32?u=assignee4" />
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-400">Oct 1, 2025</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span
-                                        class="px-3 py-1 text-xs font-medium rounded-full bg-blue-500/20 text-blue-300">To
-                                        Do</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-white font-medium">Review code</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-400">Engineering</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <img alt="Assignee avatar" class="w-8 h-8 rounded-full object-cover"
-                                        src="https://i.pravatar.cc/32?u=assignee5" />
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-400">Oct 5, 2025</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span
-                                        class="px-3 py-1 text-xs font-medium rounded-full bg-yellow-500/20 text-yellow-300">In
-                                        Progress</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </main>
+                    <div class="overflow-x-auto rounded-xl border border-gray-700 bg-gray-800">
+                        <table class="w-full text-left">
+                            <thead class="bg-gray-700/50">
+                                <tr>
+                                    <th
+                                        class="px-6 py-4 text-left text-gray-300 text-xs font-medium uppercase tracking-wider">
+                                        Task</th>
+                                    <th
+                                        class="px-6 py-4 text-left text-gray-300 text-xs font-medium uppercase tracking-wider">
+                                        Project</th>
+                                    <th
+                                        class="px-6 py-4 text-left text-gray-300 text-xs font-medium uppercase tracking-wider">
+                                        Assignee</th>
+                                    <th
+                                        class="px-6 py-4 text-left text-gray-300 text-xs font-medium uppercase tracking-wider">
+                                        Due Date</th>
+                                    <th
+                                        class="px-6 py-4 text-left text-gray-300 text-xs font-medium uppercase tracking-wider">
+                                        Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-700">
+                                <tr class="hover:bg-gray-700/50">
+                                    <td class="px-6 py-4 whitespace-nowrap"><a href="TaskDetailsPage.html"
+                                            class="font-medium text-white hover:text-[var(--primary-400)]">Design
+                                            landing page</a></td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-gray-400">Marketing</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <img alt="Assignee avatar" class="w-8 h-8 rounded-full object-cover"
+                                            src="https://i.pravatar.cc/32?u=assignee1" />
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-gray-400">Sep 15, 2025</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span
+                                            class="px-3 py-1 text-xs font-medium rounded-full bg-yellow-500/20 text-yellow-300">In
+                                            Progress</span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-700/50">
+                                    <td class="px-6 py-4 whitespace-nowrap"><a href="TaskDetailsPage.html"
+                                            class="font-medium text-white hover:text-[var(--primary-400)]">Develop user
+                                            dashboard</a></td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-gray-400">Product</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <img alt="Assignee avatar" class="w-8 h-8 rounded-full object-cover"
+                                            src="https://i.pravatar.cc/32?u=assignee2" />
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-gray-400">Sep 20, 2025</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span
+                                            class="px-3 py-1 text-xs font-medium rounded-full bg-blue-500/20 text-blue-300">To
+                                            Do</span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-700/50">
+                                    <td class="px-6 py-4 whitespace-nowrap"><a href="TaskDetailsPage.html"
+                                            class="font-medium text-white hover:text-[var(--primary-400)]">Write blog
+                                            post</a></td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-gray-400">Content</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <img alt="Assignee avatar" class="w-8 h-8 rounded-full object-cover"
+                                            src="https://i.pravatar.cc/32?u=assignee3" />
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-gray-400">Sep 25, 2025</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span
+                                            class="px-3 py-1 text-xs font-medium rounded-full bg-green-500/20 text-green-300">Done</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </div>
         </div>
-        <button
+        <div id="menu-overlay" class="fixed inset-0 z-40 hidden bg-black/60 backdrop-blur-sm lg:hidden"></div>
+        <div id="mobile-menu"
+            class="fixed left-0 top-0 z-50 flex h-full w-full max-w-xs transform flex-col bg-gray-800 shadow-xl transition-transform duration-300 ease-in-out -translate-x-full lg:hidden">
+            <div class="flex items-center justify-between border-b border-gray-700 p-4">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-8 h-8 bg-[var(--primary-500)] rounded-full flex items-center justify-center text-white font-bold text-base">
+                        S </div>
+                    <h2 class="text-lg font-bold text-white">SynergySphere</h2>
+                </div>
+                <button id="close-menu-btn"
+                    class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-700 hover:text-white">
+                    <span class="sr-only">Close menu</span>
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="flex flex-col flex-grow p-4 space-y-2">
+                <nav class="flex flex-col gap-2 flex-grow">
+                    <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
+                        href="ProjectDashboardPage.html">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        <span class="text-sm font-medium">Dashboard</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-white bg-gray-700 rounded-lg transition-colors"
+                        href="UserTaskDashboardPage.html">
+                        <span class="material-symbols-outlined">check_box</span>
+                        <span class="text-sm font-medium">My Tasks</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
+                        href="ProjectListPage.html">
+                        <span class="material-symbols-outlined">folder</span>
+                        <span class="text-sm font-medium">Projects</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined">forum</span>
+                        <span class="text-sm font-medium">Discussion</span>
+                    </a>
+                </nav>
+            </div>
+            <div class="border-t border-gray-700 p-4">
+                <a href="../Account/ProfilePage.html" class="flex items-center gap-4 rounded-lg p-2 hover:bg-gray-700">
+                    <img alt="User avatar" class="h-10 w-10 flex-shrink-0 rounded-full bg-cover bg-center"
+                        src="https://i.pravatar.cc/40?u=janedoe" />
+                    <div>
+                        <p class="font-bold text-white">Jane Doe</p>
+                        <p class="text-sm text-gray-400">View Profile</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <a href="CreateTaskPage.html"
             class="absolute bottom-8 right-8 flex items-center justify-center h-16 w-16 rounded-full bg-[var(--primary-500)] text-white shadow-lg hover:bg-[var(--primary-600)] transition-colors">
+            <span class="sr-only">Create new task</span>
             <span class="material-symbols-outlined text-3xl">add</span>
-        </button>
+        </a>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const openMenuBtn = document.getElementById('open-menu-btn');
+            const closeMenuBtn = document.getElementById('close-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOverlay = document.getElementById('menu-overlay');
+            const openMenu = () => {
+                mobileMenu.classList.remove('-translate-x-full');
+                menuOverlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeMenu = () => {
+                mobileMenu.classList.add('-translate-x-full');
+                menuOverlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            };
+            if (openMenuBtn) openMenuBtn.addEventListener('click', openMenu);
+            if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+            if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+        });
+    </script>
 </body>
 
 </html>

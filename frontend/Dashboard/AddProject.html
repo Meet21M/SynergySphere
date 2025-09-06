@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>SynergySphere - New Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
     <link as="style"
         href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&family=Spline+Sans%3Awght%40400%3B500%3B700"
@@ -12,213 +13,261 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style type="text/tailwindcss">
         :root {
-            --primary-50: #f0fdf4;
-            --primary-100: #dcfce7;
-            --primary-200: #bbf7d0;
-            --primary-300: #86efac;
-            --primary-400: #4ade80;
-            --primary-500: #22c55e;
-            --primary-600: #16a34a;
-            --primary-700: #15803d;
-            --primary-800: #166534;
-            --primary-900: #14532d;
-            --primary-950: #052e16;
+            --primary-50: #f0fdf4; --primary-100: #dcfce7; --primary-200: #bbf7d0; --primary-300: #86efac; --primary-400: #4ade80; --primary-500: #22c55e; --primary-600: #16a34a; --primary-700: #15803d; --primary-800: #166534; --primary-900: #14532d; --primary-950: #052e16;
         }
-
-        body {
-            font-family: "Spline Sans", "Noto Sans", sans-serif;
-        }
-        
-        .form-input {
-            @apply w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)];
-        }
-        
-        .form-radio {
-            @apply h-4 w-4 border-gray-600 bg-gray-700 text-[var(--primary-500)] focus:ring-[var(--primary-500)] focus:ring-offset-gray-900;
-        }
-
-        .calendar-select {
-            @apply appearance-none rounded-md border-none bg-gray-700/50 py-1 pl-2 pr-8 text-base font-bold text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)];
-        }
-        
-        .date-picker-day {
-            @apply flex h-10 w-10 items-center justify-center rounded-full text-sm font-medium transition-colors;
-        }
-
-        .date-picker-day:not(:disabled):hover {
-            @apply bg-gray-700/50;
-        }
-
-        .date-picker-day.selected {
-            @apply bg-[var(--primary-500)] text-white;
-        }
-
-        .date-picker-day.today {
-            @apply ring-1 ring-[var(--primary-500)];
-        }
+        .form-input { @apply w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]; }
+        .form-radio { @apply h-4 w-4 border-gray-600 bg-gray-700 text-[var(--primary-500)] focus:ring-[var(--primary-500)] focus:ring-offset-gray-900; }
+        .calendar-select { @apply appearance-none rounded-md border-none bg-gray-700/50 py-1 pl-2 pr-8 text-base font-bold text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)]; }
+        .date-picker-day { @apply flex h-10 w-10 items-center justify-center rounded-full text-sm font-medium transition-colors; }
+        .date-picker-day:not(:disabled):hover { @apply bg-gray-700/50; }
+        .date-picker-day.selected { @apply bg-[var(--primary-500)] text-white; }
+        .date-picker-day.today { @apply ring-1 ring-[var(--primary-500)]; }
     </style>
 </head>
 
-<body class="bg-gray-900 antialiased">
-    <div class="relative flex size-full min-h-screen flex-col overflow-x-hidden text-white">
-        <header
-            class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-800 px-10 py-3">
-            <div class="flex items-center gap-4">
-                <div class="size-6 text-[var(--primary-400)]">
-                    <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z"
-                            fill="currentColor"></path>
-                    </svg>
+<body class="bg-gray-900 antialiased" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+    <div class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
+        <div class="flex flex-1">
+            <aside class="hidden lg:flex w-64 flex-col bg-gray-800 p-6 shrink-0">
+                <div class="flex items-center gap-3 mb-8">
+                    <div
+                        class="w-10 h-10 bg-[var(--primary-500)] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                        S</div>
+                    <h1 class="text-white text-xl font-bold">SynergySphere</h1>
                 </div>
-                <h1 class="text-xl font-bold">SynergySphere</h1>
+                <nav class="flex flex-col gap-2 flex-grow">
+                    <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
+                        href="ProjectDashboardPage.html">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        <span class="text-sm font-medium">Dashboard</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
+                        href="UserTaskDashboardPage.html">
+                        <span class="material-symbols-outlined">check_box</span>
+                        <span class="text-sm font-medium">My Tasks</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-white bg-gray-700 rounded-lg transition-colors"
+                        href="ProjectListPage.html">
+                        <span class="material-symbols-outlined">folder</span>
+                        <span class="text-sm font-medium">Projects</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined">forum</span>
+                        <span class="text-sm font-medium">Discussion</span>
+                    </a>
+                </nav>
+                <div class="flex flex-col gap-4">
+                    <a href="AddProject.html"
+                        class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-6 bg-[var(--primary-500)] text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[var(--primary-600)] transition-colors">
+                        <span class="truncate">New Project</span>
+                    </a>
+                    <div class="border-t border-gray-700 my-2"></div>
+                    <a href="../Account/ProfilePage.html"
+                        class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-700">
+                        <img alt="User avatar" class="w-10 h-10 rounded-full object-cover"
+                            src="https://i.pravatar.cc/40?u=currentuser" />
+                        <div class="flex flex-col">
+                            <p class="text-white font-semibold">Current User</p>
+                            <p class="text-gray-400 text-sm">View Profile</p>
+                        </div>
+                    </a>
+                </div>
+            </aside>
+            <div class="flex flex-1 flex-col">
+                <header
+                    class="sticky top-0 z-10 flex items-center justify-between whitespace-nowrap border-b border-gray-800 bg-gray-900/80 px-4 py-3 sm:px-10 backdrop-blur-sm">
+                    <div class="flex items-center gap-4">
+                        <button id="open-menu-btn"
+                            class="flex lg:hidden h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
+                            <span class="sr-only">Open menu</span>
+                            <span class="material-symbols-outlined text-2xl">menu</span>
+                        </button>
+                        <h2 class="text-white text-2xl font-bold">Create New Project</h2>
+                    </div>
+                    <div class="flex items-center justify-end gap-2">
+                        <button
+                            class="text-gray-400 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors"><span
+                                class="material-symbols-outlined">search</span></button>
+                        <button
+                            class="text-gray-400 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors"><span
+                                class="material-symbols-outlined">notifications</span></button>
+                    </div>
+                </header>
+                <main class="flex flex-1 items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+                    <div class="w-full max-w-2xl">
+                        <form action="#" class="space-y-6" method="POST">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300" for="project-name">Project
+                                    Name</label>
+                                <div class="mt-1"><input class="form-input" id="project-name" name="project-name"
+                                        placeholder="e.g., Q4 Marketing Campaign" required="" type="text" /></div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300"
+                                    for="description">Description</label>
+                                <div class="mt-1"><textarea class="form-input min-h-24 resize-y" id="description"
+                                        name="description"
+                                        placeholder="Add a detailed description for your project..."></textarea></div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300" for="tags-input">Project
+                                    Tags</label>
+                                <div id="tags-container"
+                                    class="mt-1 w-full rounded-lg bg-gray-900/70 ring-1 ring-gray-700 focus-within:ring-2 focus-within:ring-[var(--primary-400)]">
+                                    <input id="tags-input" type="text"
+                                        class="w-full bg-transparent px-4 pt-3 text-white outline-none placeholder:text-gray-500 focus:ring-0"
+                                        placeholder="Add a tag and press Enter..." />
+                                    <div id="tags-display-area"
+                                        class="flex min-h-[2.5rem] flex-wrap items-center gap-2 px-4 pb-3 pt-2"></div>
+                                </div>
+                                <input type="hidden" name="tags" id="tags-hidden-input">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300" for="manager-email">Project
+                                    Manager Email</label>
+                                <div class="mt-1"><input class="form-input" id="manager-email" name="manager-email"
+                                        placeholder="manager@example.com" required="" type="email" /></div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300" for="deadline">Deadline</label>
+                                <div class="relative mt-1">
+                                    <input class="form-input pr-10" id="deadline" placeholder="Select a date"
+                                        type="text" />
+                                    <span
+                                        class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">calendar_today</span>
+                                </div>
+                            </div>
+                            <div id="calendar-container" class="rounded-lg bg-gray-800 p-4">
+                                <div class="flex items-center justify-between">
+                                    <button id="prev-month-btn" class="rounded-full p-2 text-white hover:bg-gray-700"
+                                        type="button"><span
+                                            class="material-symbols-outlined">chevron_left</span></button>
+                                    <div class="flex gap-2">
+                                        <div class="relative"><select id="month-select" class="calendar-select"
+                                                style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 20 20%27%3e%3cpath stroke=%27%239ca3af%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27 d=%27m6 8 4 4 4-4%27/%3e%3c/svg%3e')"></select>
+                                        </div>
+                                        <div class="relative"><select id="year-select" class="calendar-select"
+                                                style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 20 20%27%3e%3cpath stroke=%27%239ca3af%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27 d=%27m6 8 4 4 4-4%27/%3e%3c/svg%3e')"></select>
+                                        </div>
+                                    </div>
+                                    <button id="next-month-btn" class="rounded-full p-2 text-white hover:bg-gray-700"
+                                        type="button"><span
+                                            class="material-symbols-outlined">chevron_right</span></button>
+                                </div>
+                                <div id="calendar-grid" class="mt-4 grid grid-cols-7 place-items-center"></div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300">Priority</label>
+                                <div class="mt-2 flex flex-wrap items-center gap-x-6 gap-y-2">
+                                    <div class="flex items-center"><input id="priority-low" name="priority" type="radio"
+                                            value="low" class="form-radio" checked><label for="priority-low"
+                                            class="ml-2 block text-sm text-gray-200">Low</label></div>
+                                    <div class="flex items-center"><input id="priority-medium" name="priority"
+                                            type="radio" value="medium" class="form-radio"><label for="priority-medium"
+                                            class="ml-2 block text-sm text-gray-200">Medium</label></div>
+                                    <div class="flex items-center"><input id="priority-high" name="priority"
+                                            type="radio" value="high" class="form-radio"><label for="priority-high"
+                                            class="ml-2 block text-sm text-gray-200">High</label></div>
+                                    <div class="flex items-center"><input id="priority-urgent" name="priority"
+                                            type="radio" value="urgent" class="form-radio"><label for="priority-urgent"
+                                            class="ml-2 block text-sm text-gray-200">Urgent</label></div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300" for="project-status">Project
+                                    Status</label>
+                                <div class="mt-1"><select id="project-status"
+                                        class="form-input appearance-none bg-right-4 bg-no-repeat"
+                                        style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 20 20%27%3e%3cpath stroke=%27%239ca3af%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27 d=%27m6 8 4 4 4-4%27/%3e%3c/svg%3e')">
+                                        <option>To-Do</option>
+                                        <option>In Progress</option>
+                                        <option>Completed</option>
+                                    </select></div>
+                            </div>
+                            <div class="flex items-center justify-end space-x-4 pt-4">
+                                <a href="ProjectListPage.html"
+                                    class="rounded-full border border-gray-700 px-5 py-2 text-sm font-semibold text-gray-200 hover:bg-gray-700 transition-colors">Cancel</a>
+                                <button
+                                    class="rounded-full border border-transparent bg-[var(--primary-500)] px-5 py-2 text-sm font-semibold text-white hover:bg-[var(--primary-600)] transition-colors"
+                                    type="submit">Create Project</button>
+                            </div>
+                        </form>
+                    </div>
+                </main>
             </div>
-            <nav class="hidden md:flex items-center gap-8">
-                <a class="text-sm font-medium text-gray-300 hover:text-white transition-colors" href="#">Dashboard</a>
-                <a class="text-sm font-medium text-white" href="#">Projects</a>
-                <a class="text-sm font-medium text-gray-300 hover:text-white transition-colors" href="#">Tasks</a>
-                <a class="text-sm font-medium text-gray-300 hover:text-white transition-colors" href="#">Team</a>
-            </nav>
-            <div class="flex items-center gap-4">
-                <button class="relative rounded-full p-2 text-gray-400 hover:bg-gray-800 hover:text-white">
-                    <span class="material-symbols-outlined"> notifications </span>
-                    <span class="absolute right-2 top-2 block h-2 w-2 rounded-full bg-[var(--primary-500)]"></span>
+        </div>
+        <div id="menu-overlay" class="fixed inset-0 z-40 hidden bg-black/60 backdrop-blur-sm lg:hidden"></div>
+        <div id="mobile-menu"
+            class="fixed left-0 top-0 z-50 flex h-full w-full max-w-xs transform flex-col bg-gray-800 shadow-xl transition-transform duration-300 ease-in-out -translate-x-full lg:hidden">
+            <div class="flex items-center justify-between border-b border-gray-700 p-4">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-8 h-8 bg-[var(--primary-500)] rounded-full flex items-center justify-center text-white font-bold text-base">
+                        S </div>
+                    <h2 class="text-lg font-bold text-white">SynergySphere</h2>
+                </div>
+                <button id="close-menu-btn"
+                    class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-700 hover:text-white">
+                    <span class="sr-only">Close menu</span>
+                    <span class="material-symbols-outlined">close</span>
                 </button>
-                <div class="size-10 rounded-full bg-cover bg-center"
-                    style='background-image: url("https://i.pravatar.cc/40?u=currentuser");'></div>
             </div>
-        </header>
-        <main class="flex flex-1 items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-            <div class="w-full max-w-2xl space-y-8 rounded-2xl bg-gray-800/50 p-10 shadow-2xl backdrop-blur-sm">
-                <div>
-                    <h2 class="text-center text-3xl font-bold tracking-tight text-white">Create a new project</h2>
-                    <p class="mt-2 text-center text-sm text-gray-400">Fill in the details below to get your project
-                        started.</p>
-                </div>
-                <form action="#" class="space-y-6" method="POST">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300" for="project-name">Project Name</label>
-                        <div class="mt-1">
-                            <input class="form-input" id="project-name" name="project-name"
-                                placeholder="e.g., Q4 Marketing Campaign" required="" type="text" />
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300" for="description">Description</label>
-                        <div class="mt-1">
-                            <textarea class="form-input min-h-24 resize-y" id="description" name="description"
-                                placeholder="Add a detailed description for your project..."></textarea>
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300" for="tags-input">Project Tags</label>
-                        <div id="tags-container"
-                            class="mt-1 w-full rounded-lg bg-gray-900/70 ring-1 ring-gray-700 focus-within:ring-2 focus-within:ring-[var(--primary-400)]">
-                            <input id="tags-input" type="text"
-                                class="w-full bg-transparent px-4 pt-3 text-white outline-none placeholder:text-gray-500 focus:ring-0"
-                                placeholder="Add a tag and press Enter..." />
-                            <div id="tags-display-area"
-                                class="flex min-h-[2.5rem] flex-wrap items-center gap-2 px-4 pb-3 pt-2"></div>
-                        </div>
-                        <input type="hidden" name="tags" id="tags-hidden-input">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300" for="manager-email">Project Manager
-                            Email</label>
-                        <div class="mt-1">
-                            <input class="form-input" id="manager-email" name="manager-email"
-                                placeholder="manager@example.com" required="" type="email" />
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300" for="deadline">Deadline</label>
-                        <div class="relative mt-1">
-                            <input class="form-input pr-10" id="deadline" placeholder="Select a date" type="text" />
-                            <span
-                                class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">calendar_today</span>
-                        </div>
-                    </div>
-                    <div id="calendar-container" class="rounded-lg bg-gray-800 p-4">
-                        <div class="flex items-center justify-between">
-                            <button id="prev-month-btn" class="rounded-full p-2 text-white hover:bg-gray-700"
-                                type="button">
-                                <span class="material-symbols-outlined">chevron_left</span>
-                            </button>
-                            <div class="flex gap-2">
-                                <div class="relative">
-                                    <select id="month-select" class="calendar-select"
-                                        style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 20 20%27%3e%3cpath stroke=%27%239ca3af%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27 d=%27m6 8 4 4 4-4%27/%3e%3c/svg%3e')"></select>
-                                </div>
-                                <div class="relative">
-                                    <select id="year-select" class="calendar-select"
-                                        style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 20 20%27%3e%3cpath stroke=%27%239ca3af%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27 d=%27m6 8 4 4 4-4%27/%3e%3c/svg%3e')"></select>
-                                </div>
-                            </div>
-                            <button id="next-month-btn" class="rounded-full p-2 text-white hover:bg-gray-700"
-                                type="button">
-                                <span class="material-symbols-outlined">chevron_right</span>
-                            </button>
-                        </div>
-                        <div id="calendar-grid" class="mt-4 grid grid-cols-7 place-items-center"></div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300">Priority</label>
-                        <div class="mt-2 flex flex-wrap items-center gap-x-6 gap-y-2">
-                            <div class="flex items-center">
-                                <input id="priority-low" name="priority" type="radio" value="low" class="form-radio"
-                                    checked>
-                                <label for="priority-low" class="ml-2 block text-sm text-gray-200">Low</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input id="priority-medium" name="priority" type="radio" value="medium"
-                                    class="form-radio">
-                                <label for="priority-medium" class="ml-2 block text-sm text-gray-200">Medium</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input id="priority-high" name="priority" type="radio" value="high" class="form-radio">
-                                <label for="priority-high" class="ml-2 block text-sm text-gray-200">High</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input id="priority-urgent" name="priority" type="radio" value="urgent"
-                                    class="form-radio">
-                                <label for="priority-urgent" class="ml-2 block text-sm text-gray-200">Urgent</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300" for="project-status">Project
-                            Status</label>
-                        <div class="mt-1">
-                            <select id="project-status" class="form-input appearance-none bg-right-4 bg-no-repeat"
-                                style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 20 20%27%3e%3cpath stroke=%27%239ca3af%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27 d=%27m6 8 4 4 4-4%27/%3e%3c/svg%3e')">
-                                <option>To-Do</option>
-                                <option>In Progress</option>
-                                <option>Completed</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-end space-x-4 pt-4">
-                        <button
-                            class="rounded-full border border-gray-700 px-5 py-2 text-sm font-semibold text-gray-200 hover:bg-gray-700 transition-colors"
-                            type="button">Cancel</button>
-                        <button
-                            class="rounded-full border border-transparent bg-[var(--primary-500)] px-5 py-2 text-sm font-semibold text-white hover:bg-[var(--primary-600)] transition-colors"
-                            type="submit">Create Project</button>
-                    </div>
-                </form>
+            <div class="flex flex-col flex-grow p-4 space-y-2">
+                <nav class="flex flex-col gap-2 flex-grow">
+                    <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
+                        href="ProjectDashboardPage.html">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        <span class="text-sm font-medium">Dashboard</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
+                        href="UserTaskDashboardPage.html">
+                        <span class="material-symbols-outlined">check_box</span>
+                        <span class="text-sm font-medium">My Tasks</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-white bg-gray-700 rounded-lg transition-colors"
+                        href="ProjectListPage.html">
+                        <span class="material-symbols-outlined">folder</span>
+                        <span class="text-sm font-medium">Projects</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined">forum</span>
+                        <span class="text-sm font-medium">Discussion</span>
+                    </a>
+                </nav>
             </div>
-        </main>
+            <div class="border-t border-gray-700 p-4">
+                <a href="../Account/ProfilePage.html" class="flex items-center gap-4 rounded-lg p-2 hover:bg-gray-700">
+                    <img alt="User avatar" class="h-10 w-10 flex-shrink-0 rounded-full bg-cover bg-center"
+                        src="https://i.pravatar.cc/40?u=currentuser" />
+                    <div>
+                        <p class="font-bold text-white">Current User</p>
+                        <p class="text-sm text-gray-400">View Profile</p>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- MOBILE MENU SCRIPT ---
+            const openMenuBtn = document.getElementById('open-menu-btn');
+            const closeMenuBtn = document.getElementById('close-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOverlay = document.getElementById('menu-overlay');
+            const openMenu = () => { mobileMenu.classList.remove('-translate-x-full'); menuOverlay.classList.remove('hidden'); document.body.style.overflow = 'hidden'; };
+            const closeMenu = () => { mobileMenu.classList.add('-translate-x-full'); menuOverlay.classList.add('hidden'); document.body.style.overflow = ''; };
+            if (openMenuBtn) openMenuBtn.addEventListener('click', openMenu);
+            if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+            if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
             // --- TAGS INPUT LOGIC ---
             const tagsContainer = document.getElementById('tags-container');
             const tagsInput = document.getElementById('tags-input');
             const tagsDisplayArea = document.getElementById('tags-display-area');
             const tagsHiddenInput = document.getElementById('tags-hidden-input');
             let tags = [];
-
             function updateTagsDisplay() {
                 tagsDisplayArea.innerHTML = '';
                 tags.forEach(tag => {
@@ -261,69 +310,49 @@
             const prevMonthBtn = document.getElementById('prev-month-btn');
             const nextMonthBtn = document.getElementById('next-month-btn');
             const calendarGrid = document.getElementById('calendar-grid');
-
             let selectedDate = new Date();
             selectedDate.setHours(0, 0, 0, 0);
             const today = new Date();
             today.setHours(0, 0, 0, 0);
-
-            function formatDate(date) {
-                return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-            }
-
+            function formatDate(date) { return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }); }
             function populateSelects() {
                 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
                 monthSelect.innerHTML = '';
                 months.forEach((month, index) => {
                     const option = document.createElement('option');
-                    option.value = index;
-                    option.textContent = month;
-                    monthSelect.appendChild(option);
+                    option.value = index; option.textContent = month; monthSelect.appendChild(option);
                 });
                 const selectedYear = selectedDate.getFullYear();
                 const currentYear = today.getFullYear();
                 yearSelect.innerHTML = '';
                 for (let year = currentYear; year <= currentYear + 30; year++) {
                     const option = document.createElement('option');
-                    option.value = year;
-                    option.textContent = year;
-                    yearSelect.appendChild(option);
+                    option.value = year; option.textContent = year; yearSelect.appendChild(option);
                 }
                 if (![...yearSelect.options].some(opt => opt.value == selectedYear)) {
                     const option = document.createElement('option');
-                    option.value = selectedYear;
-                    option.textContent = selectedYear;
-                    yearSelect.appendChild(option);
+                    option.value = selectedYear; option.textContent = selectedYear; yearSelect.appendChild(option);
                     [...yearSelect.options].sort((a, b) => a.value - b.value).forEach(option => yearSelect.add(option));
                 }
             }
-
             function renderCalendar() {
-                const year = parseInt(yearSelect.value);
-                const month = parseInt(monthSelect.value);
-                monthSelect.value = month;
-                yearSelect.value = year;
-                calendarGrid.innerHTML = '';
+                const year = parseInt(yearSelect.value); const month = parseInt(monthSelect.value);
+                monthSelect.value = month; yearSelect.value = year; calendarGrid.innerHTML = '';
                 const dayHeaders = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
                 dayHeaders.forEach(day => {
                     const dayEl = document.createElement('div');
                     dayEl.classList.add('flex', 'h-10', 'w-10', 'items-center', 'justify-center', 'text-xs', 'font-bold', 'text-gray-400');
-                    dayEl.textContent = day;
-                    calendarGrid.appendChild(dayEl);
+                    dayEl.textContent = day; calendarGrid.appendChild(dayEl);
                 });
                 const firstDayOfMonth = new Date(year, month, 1).getDay();
                 const daysInMonth = new Date(year, month + 1, 0).getDate();
                 for (let i = 0; i < firstDayOfMonth; i++) { calendarGrid.appendChild(document.createElement('div')); }
                 for (let i = 1; i <= daysInMonth; i++) {
                     const dayBtn = document.createElement('button');
-                    dayBtn.type = 'button';
-                    dayBtn.classList.add('date-picker-day');
-                    dayBtn.textContent = i;
-                    const dayDate = new Date(year, month, i);
-                    dayDate.setHours(0, 0, 0, 0);
+                    dayBtn.type = 'button'; dayBtn.classList.add('date-picker-day'); dayBtn.textContent = i;
+                    const dayDate = new Date(year, month, i); dayDate.setHours(0, 0, 0, 0);
                     if (dayDate < today) {
-                        dayBtn.disabled = true;
-                        dayBtn.classList.add('text-gray-600', 'cursor-not-allowed');
+                        dayBtn.disabled = true; dayBtn.classList.add('text-gray-600', 'cursor-not-allowed');
                     } else {
                         dayBtn.classList.add('text-white');
                         dayBtn.addEventListener('click', () => { selectedDate = dayDate; dateInput.value = formatDate(selectedDate); renderCalendar(); });
@@ -333,7 +362,6 @@
                     calendarGrid.appendChild(dayBtn);
                 }
             }
-
             function updateDateFromInput() {
                 const date = new Date(dateInput.value);
                 if (!isNaN(date)) {
@@ -341,25 +369,19 @@
                     if (date >= today) { selectedDate = date; populateSelects(); renderCalendar(); }
                 }
             }
-
             monthSelect.addEventListener('change', renderCalendar);
             yearSelect.addEventListener('change', renderCalendar);
             dateInput.addEventListener('change', updateDateFromInput);
             prevMonthBtn.addEventListener('click', () => {
                 const newDate = new Date(parseInt(yearSelect.value), parseInt(monthSelect.value) - 1, 1);
-                monthSelect.value = newDate.getMonth();
-                yearSelect.value = newDate.getFullYear();
-                renderCalendar();
+                monthSelect.value = newDate.getMonth(); yearSelect.value = newDate.getFullYear(); renderCalendar();
             });
             nextMonthBtn.addEventListener('click', () => {
                 const newDate = new Date(parseInt(yearSelect.value), parseInt(monthSelect.value) + 1, 1);
-                monthSelect.value = newDate.getMonth();
-                yearSelect.value = newDate.getFullYear();
-                renderCalendar();
+                monthSelect.value = newDate.getMonth(); yearSelect.value = newDate.getFullYear(); renderCalendar();
             });
             dateInput.value = formatDate(selectedDate);
-            populateSelects();
-            renderCalendar();
+            populateSelects(); renderCalendar();
         });
     </script>
 </body>
