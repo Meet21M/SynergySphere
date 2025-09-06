@@ -1,4 +1,4 @@
-# SynergySphere - Mobile Application MVP
+# SynergySphere 
 
 SynergySphere is a lightweight **project and task management mobile-friendly web app** designed for accessibility and quick interactions.  
 This MVP (Minimum Viable Product) focuses on providing **intuitive, user-friendly interfaces** and **core features** to manage projects and tasks on the go.
