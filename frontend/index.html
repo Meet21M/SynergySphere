@@ -1,50 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <title>SynergySphere - Elevate Your Team's Synergy</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SynergySphere</title>
-    <style>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style type="text/tailwindcss">
+        :root {
+            --primary-50: #f0fdf6;
+            --primary-100: #dcfce9;
+            --primary-200: #bbf7d4;
+            --primary-300: #86efb0;
+            --primary-400: #4ade8a;
+            --primary-500: #22c55e;
+            --primary-600: #16a34a;
+            --primary-700: #15803d;
+            --primary-800: #166534;
+            --primary-900: #14532d;
+            --primary-950: #052e16;
+        }
+
         body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #111827;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            text-align: center;
-        }
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-        .button {
-            background-color: #22c55e;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .button:hover {
-            background-color: #16a34a;
+            font-family: "Spline Sans", sans-serif;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="logo">SynergySphere</div>
-        <p>Welcome to SynergySphere - Your Project Management Solution</p>
-        <a href="Auth/SignInPage.html" class="button">Get Started</a>
+
+<body class="bg-gray-900 text-white antialiased">
+    <div class="relative flex min-h-screen w-full flex-col">
+        <header
+            class="sticky top-0 z-30 flex items-center justify-between whitespace-nowrap border-b border-gray-800 bg-gray-900/80 px-4 py-3 sm:px-10 backdrop-blur-sm">
+            <a class="flex items-center gap-3 text-white" href="index.html">
+                <svg class="h-8 w-8 text-[var(--primary-400)]" fill="none" viewBox="0 0 48 48"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z"
+                        fill="currentColor"></path>
+                </svg>
+                <h1 class="text-xl font-bold tracking-tight">SynergySphere</h1>
+            </a>
+            <div class="hidden md:flex items-center gap-4">
+                <a href="SignInPage.html"
+                    class="rounded-full px-5 py-2 text-sm font-semibold text-gray-200 hover:bg-gray-800 transition-colors">Log
+                    In</a>
+                <a href="SignUpPage.html"
+                    class="rounded-full bg-[var(--primary-500)] px-5 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[var(--primary-600)]">Sign
+                    Up</a>
+            </div>
+            <button id="open-menu-btn" class="flex md:hidden h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
+                <span class="sr-only">Open menu</span>
+                <span class="material-symbols-outlined text-2xl">menu</span>
+            </button>
+        </header>
+
+        <div id="menu-overlay" class="fixed inset-0 z-40 hidden bg-black/60 backdrop-blur-sm"></div>
+        <div id="mobile-menu"
+            class="fixed right-0 top-0 z-50 flex h-full w-full max-w-sm transform flex-col bg-gray-800 shadow-xl transition-transform duration-300 ease-in-out translate-x-full">
+            <div class="flex items-center justify-between border-b border-gray-700 p-4">
+                <h3 class="text-lg font-bold text-white">SynergySphere</h3>
+                <button id="close-menu-btn"
+                    class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-700 hover:text-white">
+                    <span class="sr-only">Close menu</span>
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="flex flex-col flex-grow p-4 space-y-4">
+                <div class="flex flex-col gap-4">
+                     <a href="SignInPage.html"
+                        class="flex w-full items-center justify-center rounded-full px-5 py-3 text-base font-medium text-gray-200 transition-colors hover:bg-gray-700">Log
+                        In</a>
+                    <a href="SignUpPage.html"
+                        class="flex w-full items-center justify-center rounded-full bg-[var(--primary-500)] px-5 py-3 text-base font-medium text-white transition-colors hover:bg-[var(--primary-600)]">Sign
+                        Up Free</a>
+                </div>
+            </div>
+        </div>
+
+        <main class="flex flex-1 flex-col">
+            <section class="relative flex flex-1 items-center justify-center py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+                <div class="absolute inset-0 -z-10 overflow-hidden">
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                        <div class="h-[40rem] w-[40rem] rounded-full bg-gradient-to-tr from-[var(--primary-700)] to-gray-900 opacity-20 blur-3xl"></div>
+                    </div>
+                </div>
+                <div class="w-full max-w-4xl text-center">
+                    <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+                        Elevate Your Team's Synergy
+                    </h2>
+                    <p class="mt-6 text-lg leading-8 text-gray-300">
+                        The ultimate platform to streamline projects, manage tasks, and foster seamless communication.
+                        All in one intuitive workspace designed for peak performance.
+                    </p>
+                    <div class="mt-10 flex items-center justify-center gap-x-6">
+                        <a href="SignUpPage.html"
+                            class="rounded-full bg-[var(--primary-500)] px-6 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-[var(--primary-600)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-500)]">Get
+                            started for free</a>
+                        <a href="#" class="text-base font-semibold leading-6 text-gray-200">Learn more <span
+                                aria-hidden="true">→</span></a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="border-t border-gray-800">
+            <div class="mx-auto max-w-7xl px-6 py-8 lg:px-8">
+                <p class="text-center text-xs leading-5 text-gray-500">
+                    Developed by 
+                    <a href="https://github.com/parmar-vatsal" class="font-medium text-gray-400 hover:text-[var(--primary-400)] transition-colors" target="_blank" rel="noopener noreferrer">Vatsal Parmar</a>,
+                    <a href="https://github.com/Meet21M" class="font-medium text-gray-400 hover:text-[var(--primary-400)] transition-colors" target="_blank" rel="noopener noreferrer">Meet Makavana</a> & 
+                    <a href="https://github.com/Soul-Will" class="font-medium text-gray-400 hover:text-[var(--primary-400)] transition-colors" target="_blank" rel="noopener noreferrer">Manav Patel</a>. 
+                </p>
+            </div>
+        </footer>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const openMenuBtn = document.getElementById('open-menu-btn');
+            const closeMenuBtn = document.getElementById('close-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOverlay = document.getElementById('menu-overlay');
+            const openMenu = () => {
+                mobileMenu.classList.remove('translate-x-full');
+                menuOverlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeMenu = () => {
+                mobileMenu.classList.add('translate-x-full');
+                menuOverlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            };
+            if (openMenuBtn) openMenuBtn.addEventListener('click', openMenu);
+            if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+            if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+        });
+    </script>
 </body>
+
 </html>
