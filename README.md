@@ -1,135 +1,90 @@
-# SynergySphere Full-Stack Web Application
+# SynergySphere - Mobile Application MVP
 
-Welcome to SynergySphere, a modern full-stack web application designed for seamless collaboration and scalability.
-
-## Technologies Used
-
-- **Frontend:** React.js — a powerful JavaScript library for building dynamic user interfaces.
-- **Backend:** FastAPI — a high-performance Python framework for building APIs.
-- **Database:** PostgreSQL — a robust and reliable relational database system.
+SynergySphere is a lightweight **project and task management mobile-friendly web app** designed for accessibility and quick interactions.  
+This MVP (Minimum Viable Product) focuses on providing **intuitive, user-friendly interfaces** and **core features** to manage projects and tasks on the go.
 
 ---
 
-## Project Structure Overview
+## 🚀 Tech Stack
 
-```
-SynergySphere/
-├── .env
-├── .gitignore
-├── README.md
-├── frontend/
-│   ├── public/
-│   │   └── index.html
-│   ├── src/
-│   │   ├── assets/
-│   │   │   ├── css/
-│   │   │   ├── images/
-│   │   │   └── js/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── App.js
-│   │   ├── index.js
-│   │   └── setupTests.js
-│   ├── package.json
-│   └── README.md
-├── backend/
-│   ├── app/
-│   │   ├── __init__.py
-│   │   ├── api/
-│   │   │   ├── __init__.py
-│   │   │   ├── models/
-│   │   │   │   ├── __init__.py
-│   │   │   │   └── item.py
-│   │   │   ├── routes/
-│   │   │   │   ├── __init__.py
-│   │   │   │   └── items.py
-│   │   │   └── schemas/
-│   │   │       ├── __init__.py
-│   │   │       └── item.py
-│   │   ├── core/
-│   │   │   ├── __init__.py
-│   │   │   ├── config.py
-│   │   │   └── database.py
-│   │   ├── services/
-│   │   │   ├── __init__.py
-│   │   │   └── item_service.py
-│   │   └── utils/
-│   │       ├── __init__.py
-│   │       └── helpers.py
-│   ├── main.py
-│   ├── requirements.txt
-│   └── tests/
-│       └── test_main.py
-├── database/
-│   ├── migrations/
-│   │   └── 001_initial.sql
-│   ├── models/
-│   │   └── item.sql
-│   └── scripts/
-│       └── init_db.py
-└── docs/
-    └── api.md
-```
+- **Frontend:** HTML, CSS, JavaScript, Bootstrap  
+- **Backend:** FastAPI (Python-based high-performance API framework)  
+- **Database:** PostgreSQL  
+- **Deployment/Hosting:** Can be deployed on platforms like Render, Railway, or Heroku for backend + Vercel/Netlify for frontend  
 
 ---
 
-## Folder Breakdown
+## 📱 Wireframe Overview
 
-### Frontend
-
-- **public/**: Static files like the main HTML file.
-- **src/**: React source code.
-  - **assets/**: Stylesheets, images, and JavaScript utilities.
-  - **components/**: Reusable UI components.
-  - **pages/**: Page-level components representing different views.
-  - **App.js**: Root React component.
-  - **index.js**: Entry point for React rendering.
-  - **setupTests.js**: Test setup configuration.
-- **package.json**: Frontend dependencies and scripts.
-- **README.md**: Frontend-specific documentation.
-
-### Backend
-
-- **app/**: Core backend application.
-  - **api/**: API layer.
-    - **models/**: Database models.
-    - **routes/**: API route handlers.
-    - **schemas/**: Pydantic schemas for validation.
-  - **core/**: Configuration and database connection.
-  - **services/**: Business logic and service layer.
-  - **utils/**: Helper functions.
-- **main.py**: FastAPI application entry point.
-- **requirements.txt**: Python dependencies.
-- **tests/**: Backend tests.
-
-### Database
-
-- **migrations/**: SQL migration scripts.
-- **models/**: SQL table definitions.
-- **scripts/**: Database initialization and utility scripts.
-
-### Documentation
-
-- **docs/**: Project and API documentation.
+### 1. **Login / Sign Up Screen**
+- **Description:** Standard authentication system.  
+- **Features:**  
+  - Email & Password fields  
+  - Login button  
+  - "Sign Up" link → registration form (email, password, name)  
+  - "Forgot Password" option  
+- **UI Elements:** App logo, inputs, buttons/links  
 
 ---
 
-## Getting Started
-
-1. **Frontend:** Navigate to the `frontend` folder, run `npm install` to install dependencies, and `npm start` to launch the React app.
-2. **Backend:** Navigate to the `backend` folder, create a virtual environment, install dependencies with `pip install -r requirements.txt`, and run the FastAPI server with `uvicorn main:app --reload`.
-3. **Database:** Use the scripts in the `database` folder to initialize and migrate your PostgreSQL database.
-
----
-
-## Collaboration Tips
-
-- Each team member can focus on their area without overlap:
-  - Frontend developers work exclusively in the `frontend` directory.
-  - Backend developers manage the `backend` directory.
-  - Database & integration specialists handle the `database` folder and backend database configurations.
-- Clear separation helps avoid merge conflicts and streamlines development.
+### 2. **Project List / Dashboard Screen**
+- **Description:** Displays all projects of the logged-in user.  
+- **Features:**  
+  - List of projects with name & summary  
+  - Floating "+" button to create a new project  
+- **UI Elements:** Header with logo/title, clickable project cards  
 
 ---
 
-This structure is designed to be intuitive and scalable, making it easy for new team members to onboard and contribute effectively. Happy coding!
+### 3. **Project Detail View**
+- **Description:** Hub for a specific project.  
+- **Features:**  
+  - Displays project details  
+  - Entry point to **Task List/Board**  
+
+---
+
+### 4. **Task List / Board View**
+- **Description:** Displays all tasks under the selected project.  
+- **Features:**  
+  - Task cards with **title, assignee, due date**  
+  - "+" button to add new tasks  
+- **UI Elements:** Scrollable task list or simple Kanban-style board  
+
+---
+
+### 5. **Task Creation Modal**
+- **Description:** Form to create a new task.  
+- **Fields:**  
+  - Task Title  
+  - Description (multi-line)  
+  - Assignee (dropdown of project members)  
+  - Due Date (date picker)  
+- **Actions:** Save / Cancel buttons  
+
+---
+
+### 6. **Task Detail View**
+- **Description:** Detailed view of a selected task.  
+- **Features:**  
+  - Title, description, assignee, due date  
+  - Editable status dropdown (e.g., Pending, In-Progress, Done)  
+  - Edit option for fields  
+
+---
+
+### 7. **User Profile / Settings Screen**
+- **Description:** Basic profile management & preferences.  
+- **Features:**  
+  - Displays user's **name & email**  
+  - Logout option  
+  - Notification toggle (on/off)  
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Meet21M/synergysphere.git
+cd synergysphere
