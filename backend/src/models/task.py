@@ -17,3 +17,4 @@ class Task(Base):
     isActive = Column(Boolean,default=True,nullable=False)
     createdAt = Column(DateTime, default=datetime.now, nullable=False)
     modifiedAt = Column(DateTime, default=datetime.now, onupdate=datetime.now, nullable=False)
+    
