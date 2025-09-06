@@ -4,33 +4,35 @@
 <head>
     <meta charset="utf-8" />
     <title>SynergySphere - Sign Up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700&amp;display=swap"
         rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style type="text/tailwindcss">
         :root {
-        --primary-50: #f0fdf6;
-        --primary-100: #dcfce9;
-        --primary-200: #bbf7d4;
-        --primary-300: #86efb0;
-        --primary-400: #4ade8a;
-        --primary-500: #22c55e;
-        --primary-600: #16a34a;
-        --primary-700: #15803d;
-        --primary-800: #166534;
-        --primary-900: #14532d;
-        --primary-950: #052e16;
-      }
-      body {
-        font-family: "Spline Sans", sans-serif;
-      }
+            --primary-50: #f0fdf6;
+            --primary-100: #dcfce9;
+            --primary-200: #bbf7d4;
+            --primary-300: #86efb0;
+            --primary-400: #4ade8a;
+            --primary-500: #22c55e;
+            --primary-600: #16a34a;
+            --primary-700: #15803d;
+            --primary-800: #166534;
+            --primary-900: #14532d;
+            --primary-950: #052e16;
+        }
+        body {
+            font-family: "Spline Sans", sans-serif;
+        }
     </style>
 </head>
 
 <body class="bg-gray-900 text-white antialiased">
-    <div class="flex h-screen w-full flex-col">
+    <div class="flex min-h-screen w-full flex-col">
         <header class="flex items-center justify-center px-4 py-6 sm:px-6">
             <a class="flex items-center gap-3" href="SignInPage.html">
                 <svg class="h-8 w-8 text-[var(--primary-400)]" fill="none" viewBox="0 0 48 48"
@@ -49,29 +51,69 @@
                     <p class="mt-2 text-lg text-gray-400">And start collaborating in minutes.</p>
                 </div>
                 <form class="space-y-6 rounded-2xl bg-gray-800/50 p-8 shadow-2xl backdrop-blur-sm">
+                    <div class="flex flex-col items-center space-y-2">
+                        <label for="avatar-upload" class="relative cursor-pointer">
+                            <img id="avatar-preview"
+                                class="size-24 rounded-full object-cover p-2 bg-gray-900/70 ring-2 ring-gray-700"
+                                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM5Y2EzYWYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMjAgMjF2LTJhNCA0IDAgMCAwLTQtNEg4YTQgNCAwIDAgMC00IDR2MiI+PC9wYXRoPjxjaXJjbGUgY3g9IjEyIiBjeT0iNyIgcj0iNCI+PC9jaXJjbGU+PC9zdmc+"
+                                alt="User avatar" />
+                            <div
+                                class="absolute inset-0 flex items-center justify-center rounded-full bg-black/50 opacity-0 transition-opacity hover:opacity-100">
+                                <span class="material-symbols-outlined text-white">photo_camera</span>
+                            </div>
+                        </label>
+                        <input id="avatar-upload" name="avatar" type="file" class="hidden" accept="image/*" required />
+                        <p class="text-sm text-gray-400">Upload a photo</p>
+                    </div>
+
                     <div class="space-y-2">
                         <label class="text-sm font-medium text-gray-300" for="full-name">Full Name</label>
                         <input
                             class="form-input w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
-                            id="full-name" name="full-name" placeholder="Your Name" required="" type="text" />
+                            id="full-name" name="full-name" placeholder="Your Name" required type="text" />
                     </div>
                     <div class="space-y-2">
                         <label class="text-sm font-medium text-gray-300" for="email">Email address</label>
                         <input autocomplete="email"
                             class="form-input w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
-                            id="email" name="email" placeholder="you@example.com" required="" type="email" />
+                            id="email" name="email" placeholder="you@example.com" required type="email" />
                     </div>
                     <div class="space-y-2">
-                        <label class="text-sm font-medium text-gray-300" for="password">Password</label>
+                        <div class="flex items-center justify-between">
+                            <label class="text-sm font-medium text-gray-300" for="password">Password</label>
+                        </div>
                         <input autocomplete="new-password"
                             class="form-input w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
-                            id="password" name="password" placeholder="••••••••" required="" type="password" />
+                            id="password" name="password" placeholder="••••••••" required type="password" />
+                        <div id="password-rules" class="pt-2 text-xs text-gray-500 space-y-1">
+                            <p class="font-medium text-gray-400">Your password must include:</p>
+                            <div id="rule-length" class="flex items-center gap-2 transition-colors">
+                                <span class="material-symbols-outlined text-sm rule-icon">cancel</span>
+                                <span class="rule-text">At least 8 characters</span>
+                            </div>
+                            <div id="rule-uppercase" class="flex items-center gap-2 transition-colors">
+                                <span class="material-symbols-outlined text-sm rule-icon">cancel</span>
+                                <span class="rule-text">One uppercase letter (A-Z)</span>
+                            </div>
+                            <div id="rule-lowercase" class="flex items-center gap-2 transition-colors">
+                                <span class="material-symbols-outlined text-sm rule-icon">cancel</span>
+                                <span class="rule-text">One lowercase letter (a-z)</span>
+                            </div>
+                            <div id="rule-number" class="flex items-center gap-2 transition-colors">
+                                <span class="material-symbols-outlined text-sm rule-icon">cancel</span>
+                                <span class="rule-text">One number (0-9)</span>
+                            </div>
+                            <div id="rule-special" class="flex items-center gap-2 transition-colors">
+                                <span class="material-symbols-outlined text-sm rule-icon">cancel</span>
+                                <span class="rule-text">One special character (!, $, #, etc.)</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="space-y-2">
                         <label class="text-sm font-medium text-gray-300" for="confirm-password">Confirm Password</label>
                         <input autocomplete="new-password"
                             class="form-input w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
-                            id="confirm-password" name="confirm-password" placeholder="••••••••" required=""
+                            id="confirm-password" name="confirm-password" placeholder="••••••••" required
                             type="password" />
                     </div>
                     <div>
@@ -84,11 +126,60 @@
                 </form>
                 <p class="text-center text-sm text-gray-400">
                     Already have an account?
-                    <a class="font-medium text-[var(--primary-400)] hover:text-[var(--primary-300)]" href="SignInPage.html">Log In</a>
+                    <a class="font-medium text-[var(--primary-400)] hover:text-[var(--primary-300)]"
+                        href="SignInPage.html">Log In</a>
                 </p>
             </div>
         </main>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- AVATAR UPLOAD SCRIPT ---
+            const avatarUpload = document.getElementById('avatar-upload');
+            const avatarPreview = document.getElementById('avatar-preview');
+
+            avatarUpload.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        avatarPreview.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // --- PASSWORD VALIDATION SCRIPT ---
+            const passwordInput = document.getElementById('password');
+            const rules = {
+                length: { element: document.getElementById('rule-length'), regex: /.{8,}/ },
+                uppercase: { element: document.getElementById('rule-uppercase'), regex: /[A-Z]/ },
+                lowercase: { element: document.getElementById('rule-lowercase'), regex: /[a-z]/ },
+                number: { element: document.getElementById('rule-number'), regex: /[0-9]/ },
+                special: { element: document.getElementById('rule-special'), regex: /[^A-Za-z0-9]/ }
+            };
+
+            passwordInput.addEventListener('input', () => {
+                const password = passwordInput.value;
+                for (const ruleName in rules) {
+                    const { element, regex } = rules[ruleName];
+                    const icon = element.querySelector('.rule-icon');
+                    const text = element.querySelector('.rule-text');
+
+                    if (regex.test(password)) {
+                        element.classList.remove('text-gray-500');
+                        element.classList.add('text-[var(--primary-400)]');
+                        icon.textContent = 'check_circle';
+                    } else {
+                        element.classList.add('text-gray-500');
+                        element.classList.remove('text-[var(--primary-400)]');
+                        icon.textContent = 'cancel';
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

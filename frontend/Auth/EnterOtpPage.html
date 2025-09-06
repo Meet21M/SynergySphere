@@ -8,31 +8,61 @@
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700&amp;display=swap"
         rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style type="text/tailwindcss">
         :root {
-        --primary-50: #f0fdf6;
-        --primary-100: #dcfce9;
-        --primary-200: #bbf7d4;
-        --primary-300: #86efb0;
-        --primary-400: #4ade8a;
-        --primary-500: #22c55e;
-        --primary-600: #16a34a;
-        --primary-700: #15803d;
-        --primary-800: #166534;
-        --primary-900: #14532d;
-        --primary-950: #052e16;
-      }
-      body {
-        font-family: "Spline Sans", sans-serif;
-      }
+            --primary-50: #f0fdf6;
+            --primary-100: #dcfce9;
+            --primary-200: #bbf7d4;
+            --primary-300: #86efb0;
+            --primary-400: #4ade8a;
+            --primary-500: #22c55e;
+            --primary-600: #16a34a;
+            --primary-700: #15803d;
+            --primary-800: #166534;
+            --primary-900: #14532d;
+            --primary-950: #052e16;
+        }
+
+        body {
+            font-family: "Spline Sans", sans-serif;
+        }
+
+        /* Animation for the success checkmark */
+        .checkmark-circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+        .checkmark {
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+        }
+        @keyframes stroke {
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+        
+        /* Animation for incorrect OTP shake */
+        @keyframes shake {
+            10%, 90% { transform: translateX(-1px); }
+            20%, 80% { transform: translateX(2px); }
+            30%, 50%, 70% { transform: translateX(-4px); }
+            40%, 60% { transform: translateX(4px); }
+        }
+        .shake {
+            animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+        }
     </style>
 </head>
 
 <body class="bg-gray-900 text-white antialiased">
     <div class="flex h-screen w-full flex-col">
         <header class="flex items-center justify-center px-4 py-6 sm:px-6">
-            <a class="flex items-center gap-3" href="SignInPage.html">
+            <a class="flex items-center gap-3" href="#">
                 <svg class="h-8 w-8 text-[var(--primary-400)]" fill="none" viewBox="0 0 48 48"
                     xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -44,88 +74,206 @@
         </header>
         <main class="flex flex-1 items-center justify-center px-4 sm:px-6">
             <div class="w-full max-w-md space-y-8">
-                <div class="text-center">
-                    <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Check your email</h2>
-                    <p class="mt-2 text-lg text-gray-400">We've sent a 6-digit code to you@example.com</p>
+
+                <div id="otp-section">
+                    <div class="text-center">
+                        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Check your email</h2>
+                        <p class="mt-2 text-lg text-gray-400">We've sent a 6-digit code to you@example.com</p>
+                    </div>
+                    <form id="otp-form" class="space-y-6 rounded-2xl bg-gray-800/50 p-8 shadow-2xl backdrop-blur-sm">
+                        <div class="flex justify-center gap-2" id="otp-container">
+                            <input class="otp-input h-14 w-12 rounded-lg border-gray-700 bg-gray-900/70 text-center text-2xl font-bold text-white transition-colors focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]" maxlength="1" type="text" />
+                            <input class="otp-input h-14 w-12 rounded-lg border-gray-700 bg-gray-900/70 text-center text-2xl font-bold text-white transition-colors focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]" maxlength="1" type="text" />
+                            <input class="otp-input h-14 w-12 rounded-lg border-gray-700 bg-gray-900/70 text-center text-2xl font-bold text-white transition-colors focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]" maxlength="1" type="text" />
+                            <span class="self-center text-xl text-gray-500">-</span>
+                            <input class="otp-input h-14 w-12 rounded-lg border-gray-700 bg-gray-900/70 text-center text-2xl font-bold text-white transition-colors focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]" maxlength="1" type="text" />
+                            <input class="otp-input h-14 w-12 rounded-lg border-gray-700 bg-gray-900/70 text-center text-2xl font-bold text-white transition-colors focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]" maxlength="1" type="text" />
+                            <input class="otp-input h-14 w-12 rounded-lg border-gray-700 bg-gray-900/70 text-center text-2xl font-bold text-white transition-colors focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]" maxlength="1" type="text" />
+                        </div>
+                        <div>
+                            <button class="mt-4 w-full rounded-full bg-[var(--primary-500)] px-5 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-[var(--primary-600)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-500)]" type="submit">
+                                Verify
+                            </button>
+                        </div>
+                    </form>
+                    <p id="resend-link" class="text-center text-sm text-gray-400">
+                        Didn't receive the code?
+                        <a class="font-medium text-[var(--primary-400)] hover:text-[var(--primary-300)]" href="#">Resend Code</a>
+                    </p>
                 </div>
-                <form class="space-y-6 rounded-2xl bg-gray-800/50 p-8 shadow-2xl backdrop-blur-sm">
-                    <div class="flex justify-center gap-2" id="otp-container">
-                        <input
-                            class="otp-input h-14 w-12 rounded-lg border-gray-700 bg-gray-900/70 text-center text-2xl font-bold text-white focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
-                            maxlength="1" type="text" />
-                        <input
-                            class="otp-input h-14 w-12 rounded-lg border-gray-700 bg-gray-900/70 text-center text-2xl font-bold text-white focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
-                            maxlength="1" type="text" />
-                        <input
-                            class="otp-input h-14 w-12 rounded-lg border-gray-700 bg-gray-900/70 text-center text-2xl font-bold text-white focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
-                            maxlength="1" type="text" />
-                        <span class="self-center text-xl text-gray-500">-</span>
-                        <input
-                            class="otp-input h-14 w-12 rounded-lg border-gray-700 bg-gray-900/70 text-center text-2xl font-bold text-white focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
-                            maxlength="1" type="text" />
-                        <input
-                            class="otp-input h-14 w-12 rounded-lg border-gray-700 bg-gray-900/70 text-center text-2xl font-bold text-white focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
-                            maxlength="1" type="text" />
-                        <input
-                            class="otp-input h-14 w-12 rounded-lg border-gray-700 bg-gray-900/70 text-center text-2xl font-bold text-white focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
-                            maxlength="1" type="text" />
+
+                <div id="success-animation" class="hidden flex-col items-center justify-center text-center">
+                    <svg class="h-24 w-24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" stroke="var(--primary-500)" stroke-width="4"/>
+                        <path class="checkmark" fill="none" stroke="var(--primary-500)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M14 27l8 8 16-16"/>
+                    </svg>
+                    <h2 class="mt-4 text-2xl font-bold text-white">Verified!</h2>
+                    <p class="text-lg text-gray-400">You can now set a new password.</p>
+                </div>
+
+                <div id="new-password-section" class="hidden">
+                     <div class="text-center">
+                        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Set New Password</h2>
+                        <p class="mt-2 text-lg text-gray-400">Your new password must be secure and different from previous ones.</p>
                     </div>
-                    <div>
-                        <button
-                            class="mt-4 w-full rounded-full bg-[var(--primary-500)] px-5 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-[var(--primary-600)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-500)]"
-                            type="submit">
-                            Verify
-                        </button>
-                    </div>
-                </form>
-                <p class="text-center text-sm text-gray-400">
-                    Didn't receive the code?
-                    <a class="font-medium text-[var(--primary-400)] hover:text-[var(--primary-300)]" href="#">Resend
-                        Code</a>
-                </p>
+                    <form class="space-y-6 rounded-2xl bg-gray-800/50 p-8 shadow-2xl backdrop-blur-sm">
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-gray-300" for="new-password">New Password</label>
+                            <input class="form-input w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]" id="new-password" name="password" placeholder="••••••••" required="" type="password"/>
+                             <div id="password-rules" class="pt-2 text-xs text-gray-500 space-y-1">
+                                <p class="font-medium text-gray-400">Your password must include:</p>
+                                <div id="rule-length" class="flex items-center gap-2 transition-colors">
+                                    <span class="material-symbols-outlined text-sm rule-icon">cancel</span>
+                                    <span class="rule-text">At least 8 characters</span>
+                                </div>
+                                <div id="rule-uppercase" class="flex items-center gap-2 transition-colors">
+                                    <span class="material-symbols-outlined text-sm rule-icon">cancel</span>
+                                    <span class="rule-text">One uppercase letter (A-Z)</span>
+                                </div>
+                                <div id="rule-lowercase" class="flex items-center gap-2 transition-colors">
+                                    <span class="material-symbols-outlined text-sm rule-icon">cancel</span>
+                                    <span class="rule-text">One lowercase letter (a-z)</span>
+                                </div>
+                                <div id="rule-number" class="flex items-center gap-2 transition-colors">
+                                    <span class="material-symbols-outlined text-sm rule-icon">cancel</span>
+                                    <span class="rule-text">One number (0-9)</span>
+                                </div>
+                                <div id="rule-special" class="flex items-center gap-2 transition-colors">
+                                    <span class="material-symbols-outlined text-sm rule-icon">cancel</span>
+                                    <span class="rule-text">One special character (!, $, #, etc.)</span>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="space-y-2">
+                            <label class="text-sm font-medium text-gray-300" for="confirm-password">Confirm Password</label>
+                            <input class="form-input w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]" id="confirm-password" name="confirm-password" placeholder="••••••••" required="" type="password"/>
+                        </div>
+                        <div>
+                             <button class="w-full rounded-full bg-[var(--primary-500)] px-5 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-[var(--primary-600)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-500)]" type="submit">
+                                Reset Password
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
             </div>
         </main>
     </div>
 
     <script>
-        const otpContainer = document.getElementById('otp-container');
-        const inputs = otpContainer.querySelectorAll('.otp-input');
+        document.addEventListener('DOMContentLoaded', () => {
+            const otpSection = document.getElementById('otp-section');
+            const successSection = document.getElementById('success-animation');
+            const newPasswordSection = document.getElementById('new-password-section');
+            const otpContainer = document.getElementById('otp-container');
+            const otpForm = document.getElementById('otp-form');
+            const inputs = otpContainer.querySelectorAll('.otp-input');
+            const correctOTP = '123456';
 
-        inputs.forEach((input, index) => {
-            // Event listener for when a digit is entered
-            input.addEventListener('input', () => {
-                // If the input has a value and it's not the last one, focus the next input
-                if (input.value.length === 1 && index < inputs.length - 1) {
-                    inputs[index + 1].focus();
-                }
-            });
-
-            // Event listener for key presses, specifically for Backspace
-            input.addEventListener('keydown', (e) => {
-                // If Backspace is pressed, the input is empty, and it's not the first one
-                if (e.key === 'Backspace' && input.value.length === 0 && index > 0) {
-                    // Focus the previous input
-                    inputs[index - 1].focus();
-                }
-            });
-
-            // Bonus: Handle pasting a 6-digit code into any box
-            input.addEventListener('paste', (e) => {
-                e.preventDefault();
-                const pasteData = e.clipboardData.getData('text').slice(0, 6);
-                if (/^\d+$/.test(pasteData)) {
-                    let currentInput = index;
-                    for (let i = 0; i < pasteData.length; i++) {
-                        if (currentInput < inputs.length) {
-                            inputs[currentInput].value = pasteData[i];
-                            if (currentInput < inputs.length - 1) {
-                                currentInput++;
+            // --- OTP Input Logic ---
+            inputs.forEach((input, index) => {
+                input.addEventListener('input', (e) => {
+                    if (input.value.length === 1 && index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    }
+                    if (index === inputs.length - 1 && input.value.length === 1) {
+                        verifyOTP();
+                    }
+                });
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Backspace' && input.value.length === 0 && index > 0) {
+                        inputs[index - 1].focus();
+                    }
+                });
+                input.addEventListener('paste', (e) => {
+                    e.preventDefault();
+                    const pasteData = e.clipboardData.getData('text').slice(0, 6);
+                    if (/^\d+$/.test(pasteData)) {
+                        let currentInput = 0;
+                        for (let i = 0; i < pasteData.length; i++) {
+                            if (currentInput < inputs.length) {
+                                inputs[currentInput].value = pasteData[i];
+                                if (currentInput < inputs.length - 1) currentInput++;
                             }
                         }
+                        inputs[currentInput].focus();
+                        verifyOTP();
                     }
-                    inputs[currentInput].focus();
-                }
+                });
             });
+
+            // --- OTP Verification Logic ---
+            function verifyOTP() {
+                let enteredOTP = Array.from(inputs).map(i => i.value).join('');
+                if (enteredOTP === correctOTP) {
+                    handleSuccess();
+                } else {
+                    handleError();
+                }
+            }
+            
+            otpForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                verifyOTP();
+            });
+
+            function handleError() {
+                otpForm.classList.add('shake');
+                inputs.forEach(input => input.classList.add('border-red-500'));
+                setTimeout(() => {
+                    otpForm.classList.remove('shake');
+                     inputs.forEach(input => {
+                        input.classList.remove('border-red-500');
+                        input.value = '';
+                    });
+                    inputs[0].focus();
+                }, 1000);
+            }
+
+            function handleSuccess() {
+                otpSection.classList.add('hidden');
+                successSection.classList.remove('hidden');
+                successSection.classList.add('flex');
+                
+                setTimeout(() => {
+                    successSection.classList.add('hidden');
+                    successSection.classList.remove('flex');
+                    newPasswordSection.classList.remove('hidden');
+                    
+                    // Activate password validation script now that the section is visible
+                    activatePasswordValidation();
+                }, 2000);
+            }
+
+            // --- PASSWORD VALIDATION SCRIPT ---
+            function activatePasswordValidation() {
+                const passwordInput = document.getElementById('new-password');
+                const rules = {
+                    length: { element: document.getElementById('rule-length'), regex: /.{8,}/ },
+                    uppercase: { element: document.getElementById('rule-uppercase'), regex: /[A-Z]/ },
+                    lowercase: { element: document.getElementById('rule-lowercase'), regex: /[a-z]/ },
+                    number: { element: document.getElementById('rule-number'), regex: /[0-9]/ },
+                    special: { element: document.getElementById('rule-special'), regex: /[^A-Za-z0-9]/ }
+                };
+
+                passwordInput.addEventListener('input', () => {
+                    const password = passwordInput.value;
+                    for (const ruleName in rules) {
+                        const { element, regex } = rules[ruleName];
+                        const icon = element.querySelector('.rule-icon');
+                        
+                        if (regex.test(password)) {
+                            element.classList.remove('text-gray-500');
+                            element.classList.add('text-[var(--primary-400)]');
+                            icon.textContent = 'check_circle';
+                        } else {
+                            element.classList.add('text-gray-500');
+                            element.classList.remove('text-[var(--primary-400)]');
+                            icon.textContent = 'cancel';
+                        }
+                    }
+                });
+            }
         });
     </script>
 

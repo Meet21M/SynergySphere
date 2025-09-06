@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>SynergySphere - Create Task</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
     <link as="style"
         href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&family=Spline+Sans%3Awght%40400%3B500%3B700"
@@ -45,7 +46,7 @@
             @apply flex h-10 w-10 items-center justify-center rounded-full text-sm font-medium transition-colors;
         }
 
-        .date-picker-day:hover {
+        .date-picker-day:not(:disabled):hover {
             @apply bg-gray-700/50;
         }
 
@@ -56,13 +57,17 @@
         .date-picker-day.today {
             @apply ring-1 ring-[var(--primary-500)];
         }
+
+        .calendar-select {
+            @apply appearance-none rounded-md border-none bg-gray-700/50 py-1 pl-2 pr-8 text-base font-bold text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)];
+        }
     </style>
 </head>
 
 <body class="bg-gray-900 antialiased" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
     <div class="flex min-h-screen flex-col">
         <header
-            class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-800 px-10 py-3">
+            class="sticky top-0 z-20 flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-800 bg-gray-900/80 px-4 py-3 backdrop-blur-sm sm:px-10">
             <div class="flex items-center gap-4 text-white">
                 <div class="size-6 text-[var(--primary-400)]">
                     <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
@@ -73,21 +78,56 @@
                 </div>
                 <h2 class="text-xl font-bold tracking-tight">SynergySphere</h2>
             </div>
-            <nav class="flex items-center gap-8 text-sm font-medium text-gray-400">
-                <a class="hover:text-white" href="#">Dashboard</a>
-                <a class="hover:text-white" href="#">Projects</a>
-                <a class="hover:text-white" href="#">Tasks</a>
-                <a class="hover:text-white" href="#">Team</a>
-            </nav>
-            <div class="flex items-center gap-4">
-                <button class="relative rounded-full p-2 text-gray-400 hover:bg-gray-800 hover:text-white">
-                    <span class="material-symbols-outlined"> notifications </span>
-                    <span class="absolute right-2 top-2 block h-2 w-2 rounded-full bg-[var(--primary-500)]"></span>
+
+            <div class="hidden items-center gap-4 md:flex">
+                <nav class="flex items-center gap-8 text-sm font-medium text-gray-400">
+                    <a class="hover:text-white" href="#">Dashboard</a>
+                    <a class="hover:text-white" href="#">Projects</a>
+                    <a class="hover:text-white" href="#">Tasks</a>
+                    <a class="hover:text-white" href="#">Team</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button class="relative rounded-full p-2 text-gray-400 hover:bg-gray-800 hover:text-white">
+                        <span class="material-symbols-outlined"> notifications </span>
+                        <span class="absolute right-2 top-2 block h-2 w-2 rounded-full bg-[var(--primary-500)]"></span>
+                    </button>
+                    <div class="size-10 rounded-full bg-cover bg-center"
+                        style='background-image: url("https://i.pravatar.cc/40?u=currentuser");'></div>
+                </div>
+            </div>
+
+            <button id="open-menu-btn"
+                class="rounded-full p-2 text-gray-400 hover:bg-gray-800 hover:text-white md:hidden">
+                <span class="material-symbols-outlined"> menu </span>
+            </button>
+        </header>
+
+        <div id="menu-overlay" class="fixed inset-0 z-30 hidden bg-black/50"></div>
+        <div id="mobile-menu"
+            class="fixed right-0 top-0 z-40 flex h-full w-72 translate-x-full flex-col gap-8 bg-gray-800 p-6 shadow-xl transition-transform duration-300 ease-in-out">
+            <div class="flex items-center justify-between">
+                <h3 class="text-lg font-bold text-white">Menu</h3>
+                <button id="close-menu-btn" class="rounded-full p-2 text-gray-400 hover:bg-gray-700 hover:text-white">
+                    <span class="material-symbols-outlined"> close </span>
                 </button>
+            </div>
+            <nav class="flex flex-col gap-4 text-lg font-medium text-gray-300">
+                <a class="rounded-md px-3 py-2 hover:bg-gray-700 hover:text-white" href="#">Dashboard</a>
+                <a class="rounded-md px-3 py-2 hover:bg-gray-700 hover:text-white" href="#">Projects</a>
+                <a class="rounded-md px-3 py-2 hover:bg-gray-700 hover:text-white" href="#">Tasks</a>
+                <a class="rounded-md px-3 py-2 hover:bg-gray-700 hover:text-white" href="#">Team</a>
+            </nav>
+            <hr class="border-gray-700" />
+            <div class="flex items-center gap-4">
                 <div class="size-10 rounded-full bg-cover bg-center"
                     style='background-image: url("https://i.pravatar.cc/40?u=currentuser");'></div>
+                <div>
+                    <p class="font-bold text-white">Current User</p>
+                    <a href="#" class="text-sm text-gray-400 hover:underline">View Profile</a>
+                </div>
             </div>
-        </header>
+        </div>
+
         <main class="flex flex-1 items-center justify-center p-4">
             <div class="w-full max-w-2xl rounded-2xl bg-gray-900 p-8 shadow-2xl ring-1 ring-gray-800">
                 <h1 class="mb-6 text-2xl font-bold text-white">Create New Task</h1>
@@ -106,15 +146,19 @@
 
                     <div>
                         <label class="mb-2 block text-sm font-medium text-gray-400" for="tags-input">Tags</label>
-                        <div id="tags-container" class="w-full rounded-lg bg-gray-800 ring-1 ring-gray-700 focus-within:ring-2 focus-within:ring-[var(--primary-500)]">
-                            <input id="tags-input" type="text" class="w-full bg-transparent px-4 pt-4 text-white outline-none placeholder:text-gray-400 focus:ring-0" placeholder="Add a tag and press Enter..." />
-                             <div id="tags-display-area" class="flex min-h-[2.5rem] flex-wrap items-center gap-2 px-4 pb-4 pt-2">
-                                </div>
+                        <div id="tags-container"
+                            class="w-full rounded-lg border border-white bg-gray-800 focus-within:ring-2 focus-within:ring-[var(--primary-500)]">
+                            <input id="tags-input" type="text"
+                                class="w-full bg-transparent px-4 pt-4 text-white outline-none placeholder:text-gray-400 focus:ring-0"
+                                placeholder="Add a tag and press Enter..." />
+                            <div id="tags-display-area"
+                                class="flex min-h-[2.5rem] flex-wrap items-center gap-2 px-4 pb-4 pt-2">
+                            </div>
                         </div>
                         <input type="hidden" name="tags" id="tags-hidden-input">
                     </div>
                     <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-                         <div>
+                        <div>
                             <label class="mb-2 block text-sm font-medium text-gray-400" for="status">Status</label>
                             <select class="form-input appearance-none bg-right-4 bg-no-repeat" id="status"
                                 style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 20 20%27%3e%3cpath stroke=%27%239ca3af%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27 d=%27m6 8 4 4 4-4%27/%3e%3c/svg%3e')">
@@ -124,77 +168,43 @@
                             </select>
                         </div>
                         <div>
-                            <label class="mb-2 block text-sm font-medium text-gray-400" for="assignee">Assignee</label>
-                            <select class="form-input appearance-none bg-right-4 bg-no-repeat" id="assignee"
-                                style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 20 20%27%3e%3cpath stroke=%27%239ca3af%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27 d=%27m6 8 4 4 4-4%27/%3e%3c/svg%3e')">
-                                <option disabled="" selected="">Select a team member</option>
-                                <option value="alex">Alex Johnson</option>
-                                <option value="maria">Maria Garcia</option>
-                                <option value="chen">Chen Wei</option>
-                            </select>
+                            <label class="mb-2 block text-sm font-medium text-gray-400"
+                                for="assignee-email">Assignee</label>
+                            <input class="form-input" id="assignee-email" placeholder="Enter assignee's email"
+                                type="email" />
                         </div>
                     </div>
-                     <div>
-                            <label class="mb-2 block text-sm font-medium text-gray-400" for="due-date">Due Date</label>
-                            <div class="relative">
-                                <input class="form-input pr-10" id="due-date" placeholder="Select a date" type="text"
-                                    value="September 6, 2025" />
-                                <span
-                                    class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
-                                    calendar_today </span>
-                            </div>
+                    <div>
+                        <label class="mb-2 block text-sm font-medium text-gray-400" for="due-date">Due Date</label>
+                        <div class="relative">
+                            <input class="form-input pr-10" id="due-date" placeholder="Select a date" type="text" />
+                            <span
+                                class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+                                calendar_today </span>
                         </div>
-                    <div class="rounded-lg bg-gray-800 p-4">
+                    </div>
+                    <div id="calendar-container" class="rounded-lg bg-gray-800 p-4">
                         <div class="flex items-center justify-between">
-                            <button class="rounded-full p-2 text-white hover:bg-gray-700" type="button">
+                            <button id="prev-month-btn" class="rounded-full p-2 text-white hover:bg-gray-700"
+                                type="button">
                                 <span class="material-symbols-outlined"> chevron_left </span>
                             </button>
-                            <p class="text-base font-bold text-white">September 2025</p>
-                            <button class="rounded-full p-2 text-white hover:bg-gray-700" type="button">
+                            <div id="month-year-header" class="flex gap-2">
+                                <div class="relative">
+                                    <select id="month-select" class="calendar-select"
+                                        style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 20 20%27%3e%3cpath stroke=%27%239ca3af%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27 d=%27m6 8 4 4 4-4%27/%3e%3c/svg%3e')"></select>
+                                </div>
+                                <div class="relative">
+                                    <select id="year-select" class="calendar-select"
+                                        style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 20 20%27%3e%3cpath stroke=%27%239ca3af%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27 d=%27m6 8 4 4 4-4%27/%3e%3c/svg%3e')"></select>
+                                </div>
+                            </div>
+                            <button id="next-month-btn" class="rounded-full p-2 text-white hover:bg-gray-700"
+                                type="button">
                                 <span class="material-symbols-outlined"> chevron_right </span>
                             </button>
                         </div>
-                        <div class="mt-4 grid grid-cols-7 text-center">
-                            <p class="py-2 text-xs font-bold text-gray-400">S</p>
-                            <p class="py-2 text-xs font-bold text-gray-400">M</p>
-                            <p class="py-2 text-xs font-bold text-gray-400">T</p>
-                            <p class="py-2 text-xs font-bold text-gray-400">W</p>
-                            <p class="py-2 text-xs font-bold text-gray-400">T</p>
-                            <p class="py-2 text-xs font-bold text-gray-400">F</p>
-                            <p class="py-2 text-xs font-bold text-gray-400">S</p>
-                            <div class="col-start-2">
-                                <button class="date-picker-day text-white" type="button">1</button>
-                            </div>
-                            <div><button class="date-picker-day text-white" type="button">2</button></div>
-                            <div><button class="date-picker-day text-white" type="button">3</button></div>
-                            <div><button class="date-picker-day text-white" type="button">4</button></div>
-                            <div><button class="date-picker-day text-white" type="button">5</button></div>
-                            <div><button class="date-picker-day selected today text-white" type="button">6</button>
-                            </div>
-                            <div><button class="date-picker-day text-white" type="button">7</button></div>
-                            <div><button class="date-picker-day text-white" type="button">8</button></div>
-                            <div><button class="date-picker-day text-white" type="button">9</button></div>
-                            <div><button class="date-picker-day text-white" type="button">10</button></div>
-                            <div><button class="date-picker-day text-white" type="button">11</button></div>
-                            <div><button class="date-picker-day text-white" type="button">12</button></div>
-                            <div><button class="date-picker-day text-white" type="button">13</button></div>
-                            <div><button class="date-picker-day text-white" type="button">14</button></div>
-                            <div><button class="date-picker-day text-white" type="button">15</button></div>
-                            <div><button class="date-picker-day text-white" type="button">16</button></div>
-                            <div><button class="date-picker-day text-white" type="button">17</button></div>
-                            <div><button class="date-picker-day text-white" type="button">18</button></div>
-                            <div><button class="date-picker-day text-white" type="button">19</button></div>
-                            <div><button class="date-picker-day text-white" type="button">20</button></div>
-                            <div><button class="date-picker-day text-white" type="button">21</button></div>
-                            <div><button class="date-picker-day text-white" type="button">22</button></div>
-                            <div><button class="date-picker-day text-white" type="button">23</button></div>
-                            <div><button class="date-picker-day text-white" type="button">24</button></div>
-                            <div><button class="date-picker-day text-white" type="button">25</button></div>
-                            <div><button class="date-picker-day text-white" type="button">26</button></div>
-                            <div><button class="date-picker-day text-white" type="button">27</button></div>
-                            <div><button class="date-picker-day text-white" type="button">28</button></div>
-                            <div><button class="date-picker-day text-white" type="button">29</button></div>
-                            <div><button class="date-picker-day text-white" type="button">30</button></div>
+                        <div id="calendar-grid" class="mt-4 grid grid-cols-7 text-center">
                         </div>
                     </div>
                     <div class="flex justify-end gap-4 pt-4">
@@ -207,7 +217,33 @@
     </div>
 
     <script>
+        // --- MOBILE MENU SCRIPT ---
         document.addEventListener('DOMContentLoaded', () => {
+            const openMenuBtn = document.getElementById('open-menu-btn');
+            const closeMenuBtn = document.getElementById('close-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOverlay = document.getElementById('menu-overlay');
+
+            const openMenu = () => {
+                mobileMenu.classList.remove('translate-x-full');
+                menuOverlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+            };
+
+            const closeMenu = () => {
+                mobileMenu.classList.add('translate-x-full');
+                menuOverlay.classList.add('hidden');
+                document.body.style.overflow = ''; // Restore scrolling
+            };
+
+            openMenuBtn.addEventListener('click', openMenu);
+            closeMenuBtn.addEventListener('click', closeMenu);
+            menuOverlay.addEventListener('click', closeMenu);
+        });
+
+        // --- FORM SCRIPT ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- TAGS INPUT LOGIC ---
             const tagsContainer = document.getElementById('tags-container');
             const tagsInput = document.getElementById('tags-input');
             const tagsDisplayArea = document.getElementById('tags-display-area');
@@ -215,42 +251,33 @@
             let tags = [];
 
             function updateTagsDisplay() {
-                // Clear existing tags from the display area
                 tagsDisplayArea.innerHTML = '';
-
-                // Add each tag from the array to the display area
                 tags.forEach(tag => {
                     const tagEl = document.createElement('span');
                     tagEl.classList.add('tag', 'flex', 'items-center', 'gap-2', 'bg-gray-700', 'text-gray-300', 'text-sm', 'font-medium', 'px-3', 'py-1', 'rounded-full');
-                    
                     const tagText = document.createTextNode(tag);
-                    
                     const removeBtn = document.createElement('button');
                     removeBtn.classList.add('text-gray-500', 'hover:text-white', 'font-mono', 'text-lg', 'leading-none', 'translate-y-[-1px]');
                     removeBtn.innerHTML = '&times;';
                     removeBtn.addEventListener('click', (e) => {
-                        e.preventDefault(); // prevent form submission
+                        e.preventDefault();
                         removeTag(tag);
                     });
-
                     tagEl.appendChild(tagText);
                     tagEl.appendChild(removeBtn);
                     tagsDisplayArea.appendChild(tagEl);
                 });
-                
-                // Update the hidden input value
                 tagsHiddenInput.value = tags.join(',');
             }
 
             function addTag(tag) {
-                // Trim whitespace and ensure tag is not empty and not already in the list
                 const cleanedTag = tag.trim();
                 if (cleanedTag.length > 0 && !tags.includes(cleanedTag)) {
                     tags.push(cleanedTag);
                     updateTagsDisplay();
                 }
             }
-            
+
             function removeTag(tagToRemove) {
                 tags = tags.filter(tag => tag !== tagToRemove);
                 updateTagsDisplay();
@@ -260,22 +287,167 @@
                 if (e.key === ',' || e.key === 'Enter') {
                     e.preventDefault();
                     addTag(tagsInput.value);
-                    tagsInput.value = ''; // Clear the input
+                    tagsInput.value = '';
                 } else if (e.key === 'Backspace' && tagsInput.value === '' && tags.length > 0) {
-                    // Remove last tag on backspace if input is empty
                     removeTag(tags[tags.length - 1]);
                 }
             });
 
-            // Click on the main container to focus the text input
             tagsContainer.addEventListener('click', (e) => {
-                if(e.target === tagsContainer || e.target === tagsDisplayArea) {
+                if (e.target === tagsContainer || e.target === tagsDisplayArea) {
                     tagsInput.focus();
                 }
             });
+
+            // --- ADVANCED CALENDAR LOGIC ---
+            const dateInput = document.getElementById('due-date');
+            const monthSelect = document.getElementById('month-select');
+            const yearSelect = document.getElementById('year-select');
+            const prevMonthBtn = document.getElementById('prev-month-btn');
+            const nextMonthBtn = document.getElementById('next-month-btn');
+            const calendarGrid = document.getElementById('calendar-grid');
+
+            let selectedDate = new Date();
+            selectedDate.setHours(0, 0, 0, 0);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            function formatDate(date) {
+                return date.toLocaleDateString('en-US', {
+                    month: 'long',
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+            }
+
+            function populateSelects() {
+                const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                monthSelect.innerHTML = '';
+                months.forEach((month, index) => {
+                    const option = document.createElement('option');
+                    option.value = index;
+                    option.textContent = month;
+                    monthSelect.appendChild(option);
+                });
+
+                const selectedYear = selectedDate.getFullYear();
+                const currentYear = today.getFullYear();
+                yearSelect.innerHTML = '';
+                for (let year = currentYear; year <= currentYear + 30; year++) {
+                    const option = document.createElement('option');
+                    option.value = year;
+                    option.textContent = year;
+                    yearSelect.appendChild(option);
+                }
+
+                if (![...yearSelect.options].some(opt => opt.value == selectedYear)) {
+                    const option = document.createElement('option');
+                    option.value = selectedYear;
+                    option.textContent = selectedYear;
+                    yearSelect.appendChild(option);
+                    [...yearSelect.options].sort((a, b) => a.value - b.value).forEach(option => yearSelect.add(option));
+                }
+            }
+
+            function renderCalendar() {
+                const year = parseInt(yearSelect.value);
+                const month = parseInt(monthSelect.value);
+
+                monthSelect.value = month;
+                yearSelect.value = year;
+
+                calendarGrid.innerHTML = '';
+
+                const dayHeaders = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+                dayHeaders.forEach(day => {
+                    const dayEl = document.createElement('div');
+                    dayEl.classList.add('flex', 'h-10', 'items-center', 'justify-center', 'text-xs', 'font-bold', 'text-gray-400');
+                    dayEl.textContent = day;
+                    calendarGrid.appendChild(dayEl);
+                });
+
+                const firstDayOfMonth = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+                for (let i = 0; i < firstDayOfMonth; i++) {
+                    calendarGrid.appendChild(document.createElement('div'));
+                }
+
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const dayBtn = document.createElement('button');
+                    dayBtn.type = 'button';
+                    dayBtn.classList.add('date-picker-day');
+                    dayBtn.textContent = i;
+                    const dayDate = new Date(year, month, i);
+                    dayDate.setHours(0, 0, 0, 0);
+
+                    if (dayDate < today) {
+                        dayBtn.disabled = true;
+                        dayBtn.classList.add('text-gray-600', 'cursor-not-allowed');
+                    } else {
+                        dayBtn.classList.add('text-white');
+                        dayBtn.addEventListener('click', () => {
+                            selectedDate = dayDate;
+                            dateInput.value = formatDate(selectedDate);
+                            renderCalendar();
+                        });
+                    }
+
+                    if (dayDate.getTime() === today.getTime()) {
+                        dayBtn.classList.add('today');
+                    }
+                    if (dayDate.getTime() === selectedDate.getTime()) {
+                        dayBtn.classList.add('selected');
+                    }
+
+                    calendarGrid.appendChild(dayBtn);
+                }
+            }
+
+            function updateDateFromInput() {
+                const date = new Date(dateInput.value);
+                if (!isNaN(date)) {
+                    date.setHours(0, 0, 0, 0);
+                    if (date >= today) {
+                        selectedDate = date;
+                        populateSelects();
+                        monthSelect.value = selectedDate.getMonth();
+                        yearSelect.value = selectedDate.getFullYear();
+                        renderCalendar();
+                    }
+                }
+            }
+
+            monthSelect.addEventListener('change', renderCalendar);
+            yearSelect.addEventListener('change', renderCalendar);
+            dateInput.addEventListener('change', updateDateFromInput);
+
+            prevMonthBtn.addEventListener('click', () => {
+                const currentMonth = parseInt(monthSelect.value);
+                const currentYear = parseInt(yearSelect.value);
+                const newDate = new Date(currentYear, currentMonth - 1, 1);
+                monthSelect.value = newDate.getMonth();
+                yearSelect.value = newDate.getFullYear();
+                renderCalendar();
+            });
+
+            nextMonthBtn.addEventListener('click', () => {
+                const currentMonth = parseInt(monthSelect.value);
+                const currentYear = parseInt(yearSelect.value);
+                const newDate = new Date(currentYear, currentMonth + 1, 1);
+                monthSelect.value = newDate.getMonth();
+                yearSelect.value = newDate.getFullYear();
+                renderCalendar();
+            });
+
+            // Initial setup
+            dateInput.value = formatDate(selectedDate);
+            populateSelects();
+            monthSelect.value = selectedDate.getMonth();
+            yearSelect.value = selectedDate.getFullYear();
+            renderCalendar();
         });
     </script>
-
 </body>
 
 </html>
