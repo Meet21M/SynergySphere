@@ -50,11 +50,11 @@
                 </div>
                 <nav class="hidden md:flex items-center gap-8">
                     <a class="text-gray-300 hover:text-[var(--primary-400)] text-sm font-medium leading-normal transition-colors"
-                        href="#">Dashboard</a>
+                        href="ProjectDashboardPage.html">Dashboard</a>
                     <a class="text-gray-300 hover:text-[var(--primary-400)] text-sm font-medium leading-normal transition-colors"
-                        href="#">Projects</a>
+                        href="ProjectListPage.html">Projects</a>
                     <a class="text-gray-300 hover:text-[var(--primary-400)] text-sm font-medium leading-normal transition-colors"
-                        href="#">Tasks</a>
+                        href="UserTaskDashboardPage.html">Tasks</a>
                     <a class="text-gray-300 hover:text-[var(--primary-400)] text-sm font-medium leading-normal transition-colors"
                         href="#">Team</a>
                 </nav>
@@ -75,11 +75,11 @@
                 <div class="mx-auto flex max-w-7xl flex-col">
                     <div class="mb-8 flex flex-wrap items-center justify-between gap-4">
                         <h1 class="text-white text-4xl font-bold leading-tight tracking-tight">Dashboard</h1>
-                        <button
+                        <a href="ProjectListPage.html"
                             class="hidden md:flex items-center justify-center gap-2 rounded-full bg-[var(--primary-500)] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[var(--primary-600)]">
                             <span class="material-symbols-outlined text-base">add</span>
                             <span class="truncate">New Project</span>
-                        </button>
+                        </a>
                     </div>
                     <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
                         <section class="lg:col-span-1">
@@ -176,12 +176,12 @@
                             <div class="flex flex-col gap-6">
                                 <h2 class="text-2xl font-bold text-white">Quick Actions</h2>
                                 <div class="grid grid-cols-2 gap-4">
-                                    <button
+                                    <a href="CreateTaskPage.html"
                                         class="flex flex-col items-center justify-center gap-2 rounded-xl bg-gray-800 p-4 text-white transition-all hover:bg-gray-700/50 hover:shadow-lg">
                                         <span
                                             class="material-symbols-outlined text-3xl text-[var(--primary-400)]">add_task</span>
                                         <span class="text-sm font-medium">New Task</span>
-                                    </button>
+                                    </a>
                                     <button
                                         class="flex flex-col items-center justify-center gap-2 rounded-xl bg-gray-800 p-4 text-white transition-all hover:bg-gray-700/50 hover:shadow-lg">
                                         <span
@@ -207,10 +207,10 @@
                 </div>
             </main>
         </div>
-        <button
+        <a href="ProjectListPage.html"
             class="fixed bottom-6 right-6 flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-[var(--primary-500)] text-white shadow-lg transition-colors hover:bg-[var(--primary-600)] md:hidden">
             <span class="material-symbols-outlined text-3xl">add</span>
-        </button>
+        </a>
     </div>
 </body>
 
