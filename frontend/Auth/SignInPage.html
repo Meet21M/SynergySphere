@@ -11,21 +11,31 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style type="text/tailwindcss">
         :root {
-        --primary-50: #f0fdf6;
-        --primary-100: #dcfce9;
-        --primary-200: #bbf7d4;
-        --primary-300: #86efb0;
-        --primary-400: #4ade8a;
-        --primary-500: #22c55e;
-        --primary-600: #16a34a;
-        --primary-700: #15803d;
-        --primary-800: #166534;
-        --primary-900: #14532d;
-        --primary-950: #052e16;
-      }
-      body {
-        font-family: "Spline Sans", sans-serif;
-      }
+            --primary-50: #f0fdf6;
+            --primary-100: #dcfce9;
+            --primary-200: #bbf7d4;
+            --primary-300: #86efb0;
+            --primary-400: #4ade8a;
+            --primary-500: #22c55e;
+            --primary-600: #16a34a;
+            --primary-700: #15803d;
+            --primary-800: #166534;
+            --primary-900: #14532d;
+            --primary-950: #052e16;
+        }
+        body {
+            font-family: "Spline Sans", sans-serif;
+        }
+        /* Animation for incorrect login shake */
+        @keyframes shake {
+            10%, 90% { transform: translateX(-1px); }
+            20%, 80% { transform: translateX(2px); }
+            30%, 50%, 70% { transform: translateX(-4px); }
+            40%, 60% { transform: translateX(4px); }
+        }
+        .shake {
+            animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+        }
     </style>
 </head>
 
@@ -48,7 +58,7 @@
                     <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Welcome Back</h2>
                     <p class="mt-2 text-lg text-gray-400">Log in to continue to your workspace.</p>
                 </div>
-                <form class="space-y-6 rounded-2xl bg-gray-800/50 p-8 shadow-2xl backdrop-blur-sm">
+                <form id="login-form" class="space-y-6 rounded-2xl bg-gray-800/50 p-8 shadow-2xl backdrop-blur-sm">
                     <div class="space-y-2">
                         <label class="text-sm font-medium text-gray-300" for="email">Email address</label>
                         <input autocomplete="email"
@@ -73,15 +83,62 @@
                         </button>
                     </div>
                 </form>
+                <p id="error-message" class="hidden text-center text-sm text-red-400">Invalid email or password. Please try again.</p>
                 <p class="text-center text-sm text-gray-400">
                     Don't have an account?
-                    <a class="font-medium text-[var(--primary-400)] hover:text-[var(--primary-300)]" href="SignUpPage.html">Sign
-                        up</a>
+                    <a class="font-medium text-[var(--primary-400)] hover:text-[var(--primary-300)]" href="SignUpPage.html">Sign up</a>
                 </p>
             </div>
         </main>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('login-form');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const errorMessage = document.getElementById('error-message');
+
+            // Demo credentials
+            const correctEmail = 'admin@gmail.com';
+            const correctPassword = 'Admin@123#456';
+
+            loginForm.addEventListener('submit', (event) => {
+                event.preventDefault(); // Prevent the form from submitting the traditional way
+
+                // Get the entered values
+                const enteredEmail = emailInput.value;
+                const enteredPassword = passwordInput.value;
+
+                // Check if credentials are correct
+                if (enteredEmail === correctEmail && enteredPassword === correctPassword) {
+                    // On success, show a confirmation and redirect
+                    errorMessage.classList.add('hidden');
+                    loginForm.style.borderColor = 'var(--primary-500)';
+                    
+                    // Optional: show a success message before redirecting
+                    const loginButton = loginForm.querySelector('button');
+                    loginButton.textContent = 'Success! Redirecting...';
+                    loginButton.classList.remove('bg-[var(--primary-500)]', 'hover:bg-[var(--primary-600)]');
+                    loginButton.classList.add('bg-[var(--primary-600)]');
+                    
+                    setTimeout(() => {
+                        window.location.href = '../Dashboard/ProjectDashboardPage.html';
+                    }, 1000); // Wait 1 second before redirecting
+
+                } else {
+                    // On failure, show an error message
+                    errorMessage.classList.remove('hidden');
+                    // Add shake animation for visual feedback
+                    loginForm.classList.add('shake');
+                    // Remove the shake animation after it ends
+                    setTimeout(() => {
+                        loginForm.classList.remove('shake');
+                    }, 820);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
