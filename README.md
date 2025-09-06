@@ -86,5 +86,5 @@ This MVP (Minimum Viable Product) focuses on providing **intuitive, user-friendl
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/synergysphere.git
+git clone https://github.com/Meet21M/SynergySphere.git
 cd synergysphere
