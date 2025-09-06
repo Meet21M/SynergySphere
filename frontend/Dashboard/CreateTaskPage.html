@@ -12,42 +12,50 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style type="text/tailwindcss">
         :root {
-        --primary-50: #f0fdf4;
-        --primary-100: #dcfce7;
-        --primary-200: #bbf7d0;
-        --primary-300: #86efac;
-        --primary-400: #4ade80;
-        --primary-500: #22c55e;
-        --primary-600: #16a34a;
-        --primary-700: #15803d;
-        --primary-800: #166534;
-        --primary-900: #14532d;
-        --primary-950: #052e16;
-      }
-      .form-input {
-        @apply w-full rounded-lg border-none bg-gray-800 p-4 text-base text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)];
-      }
-      .btn {
-        @apply flex h-10 cursor-pointer items-center justify-center overflow-hidden rounded-full px-5 text-sm font-bold leading-normal tracking-wide transition-colors;
-      }
-      .btn-primary {
-        @apply bg-[var(--primary-500)] text-white hover:bg-[var(--primary-600)];
-      }
-      .btn-secondary {
-        @apply bg-gray-700 text-gray-300 hover:bg-gray-600;
-      }
-      .date-picker-day {
-        @apply flex h-10 w-10 items-center justify-center rounded-full text-sm font-medium transition-colors;
-      }
-      .date-picker-day:hover {
-        @apply bg-gray-700/50;
-      }
-      .date-picker-day.selected {
-        @apply bg-[var(--primary-500)] text-white;
-      }
-      .date-picker-day.today {
-        @apply ring-1 ring-[var(--primary-500)];
-      }
+            --primary-50: #f0fdf4;
+            --primary-100: #dcfce7;
+            --primary-200: #bbf7d0;
+            --primary-300: #86efac;
+            --primary-400: #4ade80;
+            --primary-500: #22c55e;
+            --primary-600: #16a34a;
+            --primary-700: #15803d;
+            --primary-800: #166534;
+            --primary-900: #14532d;
+            --primary-950: #052e16;
+        }
+
+        .form-input {
+            @apply w-full rounded-lg border-none bg-gray-800 p-4 text-base text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)];
+        }
+
+        .btn {
+            @apply flex h-10 cursor-pointer items-center justify-center overflow-hidden rounded-full px-5 text-sm font-bold leading-normal tracking-wide transition-colors;
+        }
+
+        .btn-primary {
+            @apply bg-[var(--primary-500)] text-white hover:bg-[var(--primary-600)];
+        }
+
+        .btn-secondary {
+            @apply bg-gray-700 text-gray-300 hover:bg-gray-600;
+        }
+
+        .date-picker-day {
+            @apply flex h-10 w-10 items-center justify-center rounded-full text-sm font-medium transition-colors;
+        }
+
+        .date-picker-day:hover {
+            @apply bg-gray-700/50;
+        }
+
+        .date-picker-day.selected {
+            @apply bg-[var(--primary-500)] text-white;
+        }
+
+        .date-picker-day.today {
+            @apply ring-1 ring-[var(--primary-500)];
+        }
     </style>
 </head>
 
@@ -66,9 +74,9 @@
                 <h2 class="text-xl font-bold tracking-tight">SynergySphere</h2>
             </div>
             <nav class="flex items-center gap-8 text-sm font-medium text-gray-400">
-                <a class="hover:text-white" href="ProjectDashboardPage.html">Dashboard</a>
-                <a class="hover:text-white" href="ProjectListPage.html">Projects</a>
-                <a class="hover:text-white" href="UserTaskDashboardPage.html">Tasks</a>
+                <a class="hover:text-white" href="#">Dashboard</a>
+                <a class="hover:text-white" href="#">Projects</a>
+                <a class="hover:text-white" href="#">Tasks</a>
                 <a class="hover:text-white" href="#">Team</a>
             </nav>
             <div class="flex items-center gap-4">
@@ -95,7 +103,26 @@
                         <textarea class="form-input min-h-32 resize-y" id="task-description"
                             placeholder="Add a more detailed description..."></textarea>
                     </div>
+
+                    <div>
+                        <label class="mb-2 block text-sm font-medium text-gray-400" for="tags-input">Tags</label>
+                        <div id="tags-container" class="w-full rounded-lg bg-gray-800 ring-1 ring-gray-700 focus-within:ring-2 focus-within:ring-[var(--primary-500)]">
+                            <input id="tags-input" type="text" class="w-full bg-transparent px-4 pt-4 text-white outline-none placeholder:text-gray-400 focus:ring-0" placeholder="Add a tag and press Enter..." />
+                             <div id="tags-display-area" class="flex min-h-[2.5rem] flex-wrap items-center gap-2 px-4 pb-4 pt-2">
+                                </div>
+                        </div>
+                        <input type="hidden" name="tags" id="tags-hidden-input">
+                    </div>
                     <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                         <div>
+                            <label class="mb-2 block text-sm font-medium text-gray-400" for="status">Status</label>
+                            <select class="form-input appearance-none bg-right-4 bg-no-repeat" id="status"
+                                style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 20 20%27%3e%3cpath stroke=%27%239ca3af%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27 d=%27m6 8 4 4 4-4%27/%3e%3c/svg%3e')">
+                                <option>To-Do</option>
+                                <option>In Progress</option>
+                                <option>Completed</option>
+                            </select>
+                        </div>
                         <div>
                             <label class="mb-2 block text-sm font-medium text-gray-400" for="assignee">Assignee</label>
                             <select class="form-input appearance-none bg-right-4 bg-no-repeat" id="assignee"
@@ -106,7 +133,8 @@
                                 <option value="chen">Chen Wei</option>
                             </select>
                         </div>
-                        <div>
+                    </div>
+                     <div>
                             <label class="mb-2 block text-sm font-medium text-gray-400" for="due-date">Due Date</label>
                             <div class="relative">
                                 <input class="form-input pr-10" id="due-date" placeholder="Select a date" type="text"
@@ -116,7 +144,6 @@
                                     calendar_today </span>
                             </div>
                         </div>
-                    </div>
                     <div class="rounded-lg bg-gray-800 p-4">
                         <div class="flex items-center justify-between">
                             <button class="rounded-full p-2 text-white hover:bg-gray-700" type="button">
@@ -178,6 +205,76 @@
             </div>
         </main>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tagsContainer = document.getElementById('tags-container');
+            const tagsInput = document.getElementById('tags-input');
+            const tagsDisplayArea = document.getElementById('tags-display-area');
+            const tagsHiddenInput = document.getElementById('tags-hidden-input');
+            let tags = [];
+
+            function updateTagsDisplay() {
+                // Clear existing tags from the display area
+                tagsDisplayArea.innerHTML = '';
+
+                // Add each tag from the array to the display area
+                tags.forEach(tag => {
+                    const tagEl = document.createElement('span');
+                    tagEl.classList.add('tag', 'flex', 'items-center', 'gap-2', 'bg-gray-700', 'text-gray-300', 'text-sm', 'font-medium', 'px-3', 'py-1', 'rounded-full');
+                    
+                    const tagText = document.createTextNode(tag);
+                    
+                    const removeBtn = document.createElement('button');
+                    removeBtn.classList.add('text-gray-500', 'hover:text-white', 'font-mono', 'text-lg', 'leading-none', 'translate-y-[-1px]');
+                    removeBtn.innerHTML = '&times;';
+                    removeBtn.addEventListener('click', (e) => {
+                        e.preventDefault(); // prevent form submission
+                        removeTag(tag);
+                    });
+
+                    tagEl.appendChild(tagText);
+                    tagEl.appendChild(removeBtn);
+                    tagsDisplayArea.appendChild(tagEl);
+                });
+                
+                // Update the hidden input value
+                tagsHiddenInput.value = tags.join(',');
+            }
+
+            function addTag(tag) {
+                // Trim whitespace and ensure tag is not empty and not already in the list
+                const cleanedTag = tag.trim();
+                if (cleanedTag.length > 0 && !tags.includes(cleanedTag)) {
+                    tags.push(cleanedTag);
+                    updateTagsDisplay();
+                }
+            }
+            
+            function removeTag(tagToRemove) {
+                tags = tags.filter(tag => tag !== tagToRemove);
+                updateTagsDisplay();
+            }
+
+            tagsInput.addEventListener('keydown', (e) => {
+                if (e.key === ',' || e.key === 'Enter') {
+                    e.preventDefault();
+                    addTag(tagsInput.value);
+                    tagsInput.value = ''; // Clear the input
+                } else if (e.key === 'Backspace' && tagsInput.value === '' && tags.length > 0) {
+                    // Remove last tag on backspace if input is empty
+                    removeTag(tags[tags.length - 1]);
+                }
+            });
+
+            // Click on the main container to focus the text input
+            tagsContainer.addEventListener('click', (e) => {
+                if(e.target === tagsContainer || e.target === tagsDisplayArea) {
+                    tagsInput.focus();
+                }
+            });
+        });
+    </script>
 
 </body>
 
