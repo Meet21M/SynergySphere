@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>SynergySphere - Discussions</title>
+    <title>SynergySphere - Discussion</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
     <link as="style"
@@ -13,22 +13,9 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style type="text/tailwindcss">
         :root {
-            --primary-50: #f0fdf6;
-            --primary-100: #dcfce9;
-            --primary-200: #bbf7d4;
-            --primary-300: #86efb0;
-            --primary-400: #4ade8a;
-            --primary-500: #22c55e;
-            --primary-600: #16a34a;
-            --primary-700: #15803d;
-            --primary-800: #166534;
-            --primary-900: #14532d;
-            --primary-950: #052e16;
+            --primary-50: #f0fdf6; --primary-100: #dcfce9; --primary-200: #bbf7d4; --primary-300: #86efb0; --primary-400: #4ade8a; --primary-500: #22c55e; --primary-600: #16a34a; --primary-700: #15803d; --primary-800: #166534; --primary-900: #14532d; --primary-950: #052e16;
         }
-
-        body {
-            font-family: "Spline Sans", sans-serif;
-        }
+        body { font-family: "Spline Sans", sans-serif; }
     </style>
 </head>
 
@@ -60,7 +47,7 @@
                         <span class="text-sm font-medium">Projects</span>
                     </a>
                     <a class="flex items-center gap-3 px-4 py-2 text-white bg-gray-700 rounded-lg transition-colors"
-                        href="#">
+                        href="DiscussionListPage.html">
                         <span class="material-symbols-outlined">forum</span>
                         <span class="text-sm font-medium">Discussion</span>
                     </a>
@@ -82,7 +69,6 @@
                     </a>
                 </div>
             </aside>
-
             <div class="flex flex-1 flex-col">
                 <header
                     class="sticky top-0 z-10 flex items-center justify-between whitespace-nowrap border-b border-gray-800 bg-gray-900/80 px-4 py-3 sm:px-10 backdrop-blur-sm">
@@ -98,12 +84,12 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-end gap-2">
+                        <a href="DiscussionListPage.html"
+                            class="text-gray-400 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors"><span
+                                class="material-symbols-outlined">arrow_back</span></a>
                         <button
                             class="text-gray-400 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors"><span
                                 class="material-symbols-outlined">search</span></button>
-                        <button
-                            class="text-gray-400 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors"><span
-                                class="material-symbols-outlined">notifications</span></button>
                     </div>
                 </header>
                 <main class="flex flex-1 flex-col bg-gray-900">
@@ -138,7 +124,7 @@
                         <div class="flex items-start gap-4 justify-end">
                             <div class="flex-1 space-y-1 max-w-lg text-right">
                                 <div class="flex items-baseline justify-end gap-2">
-                                    <p class="font-semibold text-white">Emily White</p>
+                                    <p class="font-semibold text-white">You</p>
                                     <p class="text-xs text-gray-500">10:10 AM</p>
                                 </div>
                                 <div
@@ -146,8 +132,8 @@
                                     <p>I can make Wednesday morning or Friday afternoon work.</p>
                                 </div>
                             </div>
-                            <img class="w-10 h-10 rounded-full shrink-0" src="https://i.pravatar.cc/40?u=emilywhite"
-                                alt="Emily White avatar" />
+                            <img class="w-10 h-10 rounded-full shrink-0" src="https://i.pravatar.cc/40?u=currentuser"
+                                alt="Your avatar" />
                         </div>
                         <div class="flex items-start gap-4">
                             <img class="w-10 h-10 rounded-full shrink-0" src="https://i.pravatar.cc/40?u=alexjohnson"
@@ -220,7 +206,7 @@
                         <span class="text-sm font-medium">Projects</span>
                     </a>
                     <a class="flex items-center gap-3 px-4 py-2 text-white bg-gray-700 rounded-lg transition-colors"
-                        href="#">
+                        href="DiscussionListPage.html">
                         <span class="material-symbols-outlined">forum</span>
                         <span class="text-sm font-medium">Discussion</span>
                     </a>
@@ -245,16 +231,8 @@
             const closeMenuBtn = document.getElementById('close-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             const menuOverlay = document.getElementById('menu-overlay');
-            const openMenu = () => {
-                mobileMenu.classList.remove('-translate-x-full');
-                menuOverlay.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            };
-            const closeMenu = () => {
-                mobileMenu.classList.add('-translate-x-full');
-                menuOverlay.classList.add('hidden');
-                document.body.style.overflow = '';
-            };
+            const openMenu = () => { mobileMenu.classList.remove('-translate-x-full'); menuOverlay.classList.remove('hidden'); document.body.style.overflow = 'hidden'; };
+            const closeMenu = () => { mobileMenu.classList.add('-translate-x-full'); menuOverlay.classList.add('hidden'); document.body.style.overflow = ''; };
             if (openMenuBtn) openMenuBtn.addEventListener('click', openMenu);
             if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
             if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
