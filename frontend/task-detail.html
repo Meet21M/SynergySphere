@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SynergySphere - Task Detail</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="task-list.html">← Back</a>
+            <span id="task-detail-title" class="navbar-text ms-3"></span>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title" id="task-title"></h5>
+                <p class="card-text" id="task-description"></p>
+                <p><strong>Assignee:</strong> <span id="task-assignee"></span></p>
+                <p><strong>Due Date:</strong> <span id="task-due-date"></span></p>
+                <p><strong>Status:</strong> 
+                    <select id="task-status" class="form-select">
+                        <option value="pending">Pending</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="done">Done</option>
+                    </select>
+                </p>
+                <button class="btn btn-primary" id="edit-task-btn">Edit Task</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
