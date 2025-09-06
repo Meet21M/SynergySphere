@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-<title>SynergySphere - Project List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SynergySphere - Project List</title>
     <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
     <link as="style"
         href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&family=Spline+Sans%3Awght%40400%3B500%3B700"
@@ -12,25 +13,25 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style type="text/tailwindcss">
         :root {
-        --primary-50: #f0fdf6;
-        --primary-100: #dcfce9;
-        --primary-200: #bbf7d4;
-        --primary-300: #86efb0;
-        --primary-400: #4ade8a;
-        --primary-500: #22c55e;
-        --primary-600: #16a34a;
-        --primary-700: #15803d;
-        --primary-800: #166534;
-        --primary-900: #14532d;
-        --primary-950: #052e16;
-      }
-      .material-symbols-outlined {
-        font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
-      }
+            --primary-50: #f0fdf6;
+            --primary-100: #dcfce9;
+            --primary-200: #bbf7d4;
+            --primary-300: #86efb0;
+            --primary-400: #4ade8a;
+            --primary-500: #22c55e;
+            --primary-600: #16a34a;
+            --primary-700: #15803d;
+            --primary-800: #166534;
+            --primary-900: #14532d;
+            --primary-950: #052e16;
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
     </style>
 </head>
 
@@ -38,7 +39,7 @@
     <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
         <div class="flex h-full grow flex-col">
             <header
-                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-800 px-6 md:px-10 py-4">
+                class="sticky top-0 z-30 flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-800 bg-gray-900/80 px-4 py-4 sm:px-6 md:px-10">
                 <div class="flex items-center gap-3">
                     <svg class="h-8 w-8 text-[var(--primary-400)]" fill="none" viewBox="0 0 48 48"
                         xmlns="http://www.w3.org/2000/svg">
@@ -48,6 +49,7 @@
                     </svg>
                     <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">SynergySphere</h2>
                 </div>
+
                 <nav class="hidden md:flex items-center gap-8">
                     <a class="text-gray-300 hover:text-[var(--primary-400)] text-sm font-medium leading-normal transition-colors"
                         href="#">Dashboard</a>
@@ -58,19 +60,57 @@
                     <a class="text-gray-300 hover:text-[var(--primary-400)] text-sm font-medium leading-normal transition-colors"
                         href="#">Team</a>
                 </nav>
-                <div class="flex items-center gap-4">
+
+                <div class="flex items-center gap-2 sm:gap-4">
                     <button
                         class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-800 text-white transition-colors hover:bg-gray-700">
                         <span class="material-symbols-outlined">notifications</span>
                     </button>
-                    <div class="h-10 w-10 rounded-full bg-cover bg-center bg-no-repeat"
+                    <div class="hidden h-10 w-10 rounded-full bg-cover bg-center bg-no-repeat md:block"
                         style='background-image: url("https://i.pravatar.cc/40?u=currentuser");'></div>
-                    <button
-                        class="md:hidden flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-800 text-white transition-colors hover:bg-gray-700">
+                    <button id="open-menu-btn"
+                        class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-800 text-white transition-colors hover:bg-gray-700 md:hidden">
                         <span class="material-symbols-outlined">menu</span>
                     </button>
                 </div>
             </header>
+
+            <div id="menu-overlay" class="fixed inset-0 z-40 hidden bg-black/50 backdrop-blur-sm"></div>
+            <div id="mobile-menu"
+                class="fixed right-0 top-0 z-50 flex h-full w-72 transform flex-col bg-gray-800 shadow-xl transition-transform duration-300 ease-in-out translate-x-full">
+                <div class="flex items-center justify-between border-b border-gray-700 p-4">
+                    <h3 class="text-lg font-bold text-white">Menu</h3>
+                    <button id="close-menu-btn"
+                        class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-700 hover:text-white">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                <div class="flex flex-col justify-between flex-grow p-4">
+                    <nav class="flex flex-col gap-2">
+                        <a class="rounded-lg px-4 py-3 text-base font-medium text-gray-300 transition-colors hover:bg-gray-700 hover:text-white"
+                            href="#">Dashboard</a>
+                        <a class="rounded-lg px-4 py-3 text-base font-medium text-gray-300 transition-colors hover:bg-gray-700 hover:text-white"
+                            href="#">Projects</a>
+                        <a class="rounded-lg px-4 py-3 text-base font-medium text-gray-300 transition-colors hover:bg-gray-700 hover:text-white"
+                            href="#">Tasks</a>
+                        <a class="rounded-lg px-4 py-3 text-base font-medium text-gray-300 transition-colors hover:bg-gray-700 hover:text-white"
+                            href="#">Team</a>
+                    </nav>
+                    <div class="border-t border-gray-700 pt-4">
+                        <div class="flex items-center gap-4 rounded-lg p-2">
+                            <div class="h-12 w-12 flex-shrink-0 rounded-full bg-cover bg-center"
+                                style='background-image: url("https://i.pravatar.cc/48?u=currentuser");'></div>
+                            <div>
+                                <p class="font-bold text-white">Current User</p>
+                                <a href="#"
+                                    class="text-sm text-gray-400 hover:text-[var(--primary-400)] hover:underline">View
+                                    Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <main class="flex-1 px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 py-8">
                 <div class="mx-auto flex w-full max-w-[1200px] flex-col">
                     <div class="mb-8 flex flex-wrap items-center justify-between gap-4">
@@ -316,22 +356,48 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Menu Toggle Script ---
+            const openMenuBtn = document.getElementById('open-menu-btn');
+            const closeMenuBtn = document.getElementById('close-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOverlay = document.getElementById('menu-overlay');
+
+            const openMenu = () => {
+                mobileMenu.classList.remove('translate-x-full');
+                menuOverlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const closeMenu = () => {
+                mobileMenu.classList.add('translate-x-full');
+                menuOverlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            };
+
+            openMenuBtn.addEventListener('click', openMenu);
+            closeMenuBtn.addEventListener('click', closeMenu);
+            menuOverlay.addEventListener('click', closeMenu);
+
+            // --- Dropdown Menu Script for Project Cards ---
             const buttons = document.querySelectorAll('[data-state-button-id]');
             buttons.forEach(button => {
                 button.addEventListener('click', (event) => {
                     event.stopPropagation();
                     const id = button.getAttribute('data-state-button-id');
                     const menu = document.querySelector(`[data-state-id="${id}"]`);
+
                     document.querySelectorAll('[data-state-id]').forEach(m => {
                         if (m !== menu) {
                             m.classList.add('hidden');
                         }
                     });
+
                     if (menu) {
                         menu.classList.toggle('hidden');
                     }
                 });
             });
+
             document.addEventListener('click', () => {
                 document.querySelectorAll('[data-state-id]').forEach(menu => {
                     menu.classList.add('hidden');
