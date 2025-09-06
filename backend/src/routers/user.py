@@ -105,3 +105,13 @@ def forget_password_set_new_password(password:PutForgetPassword ,email:str=Depen
     db.commit()
     db.refresh(find_user_data)
     return "Password Change Successfully"
+
+@user_router.get("/login")
+def login(username:str,password:str):
+    find_user_data = db.query(User).filter(User.name == username,User.isActive == True, User.isVerified == True, User.isDeleted == False).first()
+    if not find_user_data:
+        raise HTTPException(status_code=400,detail="User Not Found")
+    passchecker(password,find_user_data.password)
+
+    access_token = get_token(find_user_data.user_id,find_user_data.name,find_user_data.email)
+    return {"Access Token":access_token}
