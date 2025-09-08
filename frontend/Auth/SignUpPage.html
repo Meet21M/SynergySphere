@@ -50,133 +50,245 @@
                     <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Create your account</h2>
                     <p class="mt-2 text-lg text-gray-400">And start collaborating in minutes.</p>
                 </div>
-                <form class="space-y-6 rounded-2xl bg-gray-800/50 p-8 shadow-2xl backdrop-blur-sm">
-                    <div class="flex flex-col items-center space-y-2">
-                        <label for="avatar-upload" class="relative cursor-pointer">
-                            <img id="avatar-preview"
-                                class="size-24 rounded-full object-cover p-2 bg-gray-900/70 ring-2 ring-gray-700"
-                                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM5Y2EzYWYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMjAgMjF2LTJhNCA0IDAgMCAwLTQtNEg4YTQgNCAwIDAgMC00IDR2MiI+PC9wYXRoPjxjaXJjbGUgY3g9IjEyIiBjeT0iNyIgcj0iNCI+PC9jaXJjbGU+PC9zdmc+"
-                                alt="User avatar" />
-                            <div
-                                class="absolute inset-0 flex items-center justify-center rounded-full bg-black/50 opacity-0 transition-opacity hover:opacity-100">
-                                <span class="material-symbols-outlined text-white">photo_camera</span>
+                
+                <div id="signup-container">
+                    <form id="signup-form" class="space-y-4 rounded-2xl bg-gray-800/50 p-8 shadow-2xl backdrop-blur-sm">
+                        <div class="flex flex-col items-center space-y-2">
+                            <label for="avatar-upload" class="relative cursor-pointer">
+                                <img id="avatar-preview"
+                                    class="size-24 rounded-full object-cover p-1 bg-gray-900/70 ring-2 ring-gray-700"
+                                    src="../Assets/user-avatar.png"
+                                    alt="User avatar" />
+                                <div
+                                    class="absolute inset-0 flex items-center justify-center rounded-full bg-black/60 opacity-0 transition-opacity hover:opacity-100">
+                                    <span class="material-symbols-outlined text-white">photo_camera</span>
+                                </div>
+                            </label>
+                            <input id="avatar-upload" name="avatar" type="file" class="hidden" accept="image/*" />
+                            <p class="text-sm text-gray-400">Upload a photo</p>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-gray-300" for="full-name">Full Name</label>
+                            <input
+                                class="form-input w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
+                                id="full-name" name="full-name" placeholder="Your Name" required type="text" />
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-gray-300" for="email">Email address</label>
+                            <input autocomplete="email"
+                                class="form-input w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
+                                id="email" name="email" placeholder="you@example.com" required type="email" />
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-gray-300" for="password">Password</label>
+                            <div class="relative">
+                                <input autocomplete="new-password"
+                                    class="form-input w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 pr-10 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
+                                    id="password" name="password" placeholder="••••••••" required type="password" />
+                                <button type="button" class="password-toggle absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-white">
+                                    <span class="material-symbols-outlined text-xl">visibility_off</span>
+                                </button>
                             </div>
-                        </label>
-                        <input id="avatar-upload" name="avatar" type="file" class="hidden" accept="image/*" required />
-                        <p class="text-sm text-gray-400">Upload a photo</p>
+                            <div id="password-rules" class="pt-2 text-xs text-gray-500 space-y-1">
+                                <div id="rule-length" class="flex items-center gap-2 transition-colors"><span class="material-symbols-outlined text-sm rule-icon">cancel</span><span class="rule-text">At least 8 characters</span></div>
+                                <div id="rule-uppercase" class="flex items-center gap-2 transition-colors"><span class="material-symbols-outlined text-sm rule-icon">cancel</span><span class="rule-text">One uppercase letter (A-Z)</span></div>
+                                <div id="rule-lowercase" class="flex items-center gap-2 transition-colors"><span class="material-symbols-outlined text-sm rule-icon">cancel</span><span class="rule-text">One lowercase letter (a-z)</span></div>
+                                <div id="rule-number" class="flex items-center gap-2 transition-colors"><span class="material-symbols-outlined text-sm rule-icon">cancel</span><span class="rule-text">One number (0-9)</span></div>
+                                <div id="rule-special" class="flex items-center gap-2 transition-colors"><span class="material-symbols-outlined text-sm rule-icon">cancel</span><span class="rule-text">One special character (!, $, #, etc.)</span></div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-gray-300" for="confirm-password">Confirm Password</label>
+                            <div class="relative">
+                                <input autocomplete="new-password"
+                                    class="form-input w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 pr-10 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
+                                    id="confirm-password" name="confirm-password" placeholder="••••••••" required type="password" />
+                                <button type="button" class="password-toggle absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-white">
+                                    <span class="material-symbols-outlined text-xl">visibility_off</span>
+                                </button>
+                            </div>
+                            <div id="rule-match" class="hidden flex items-center gap-2 text-xs pt-1 transition-colors"><span class="material-symbols-outlined text-sm"></span><span></span></div>
+                        </div>
+                        <div class="flex items-center space-x-3 pt-2">
+                             <input type="checkbox" id="terms" name="terms" class="h-4 w-4 rounded border-gray-600 bg-gray-800 text-[var(--primary-500)] focus:ring-[var(--primary-600)]">
+                             <label for="terms" class="text-sm text-gray-400">I agree to the <a href="#" class="font-medium text-[var(--primary-400)] hover:underline">Terms of Service</a></label>
+                        </div>
+                        <div class="pt-2">
+                            <button id="signup-button"
+                                class="flex w-full items-center justify-center rounded-full bg-[var(--primary-500)] px-5 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-[var(--primary-600)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-500)] disabled:opacity-50 disabled:cursor-not-allowed"
+                                type="submit" disabled>
+                                <span id="button-text">Sign Up</span>
+                                <svg id="button-spinner" class="hidden h-5 w-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="my-6 flex items-center">
+                        <div class="flex-grow border-t border-gray-700"></div>
+                        <span class="mx-4 flex-shrink text-sm text-gray-500">OR</span>
+                        <div class="flex-grow border-t border-gray-700"></div>
                     </div>
 
-                    <div class="space-y-2">
-                        <label class="text-sm font-medium text-gray-300" for="full-name">Full Name</label>
-                        <input
-                            class="form-input w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
-                            id="full-name" name="full-name" placeholder="Your Name" required type="text" />
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-sm font-medium text-gray-300" for="email">Email address</label>
-                        <input autocomplete="email"
-                            class="form-input w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
-                            id="email" name="email" placeholder="you@example.com" required type="email" />
-                    </div>
-                    <div class="space-y-2">
-                        <div class="flex items-center justify-between">
-                            <label class="text-sm font-medium text-gray-300" for="password">Password</label>
-                        </div>
-                        <input autocomplete="new-password"
-                            class="form-input w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
-                            id="password" name="password" placeholder="••••••••" required type="password" />
-                        <div id="password-rules" class="pt-2 text-xs text-gray-500 space-y-1">
-                            <p class="font-medium text-gray-400">Your password must include:</p>
-                            <div id="rule-length" class="flex items-center gap-2 transition-colors">
-                                <span class="material-symbols-outlined text-sm rule-icon">cancel</span>
-                                <span class="rule-text">At least 8 characters</span>
-                            </div>
-                            <div id="rule-uppercase" class="flex items-center gap-2 transition-colors">
-                                <span class="material-symbols-outlined text-sm rule-icon">cancel</span>
-                                <span class="rule-text">One uppercase letter (A-Z)</span>
-                            </div>
-                            <div id="rule-lowercase" class="flex items-center gap-2 transition-colors">
-                                <span class="material-symbols-outlined text-sm rule-icon">cancel</span>
-                                <span class="rule-text">One lowercase letter (a-z)</span>
-                            </div>
-                            <div id="rule-number" class="flex items-center gap-2 transition-colors">
-                                <span class="material-symbols-outlined text-sm rule-icon">cancel</span>
-                                <span class="rule-text">One number (0-9)</span>
-                            </div>
-                            <div id="rule-special" class="flex items-center gap-2 transition-colors">
-                                <span class="material-symbols-outlined text-sm rule-icon">cancel</span>
-                                <span class="rule-text">One special character (!, $, #, etc.)</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-sm font-medium text-gray-300" for="confirm-password">Confirm Password</label>
-                        <input autocomplete="new-password"
-                            class="form-input w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)]"
-                            id="confirm-password" name="confirm-password" placeholder="••••••••" required
-                            type="password" />
-                    </div>
-                    <div>
-                        <button
-                            class="w-full rounded-full bg-[var(--primary-500)] px-5 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-[var(--primary-600)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-500)]"
-                            type="submit">
-                            Sign Up
+                    <div class="space-y-4">
+                        <button class="flex w-full items-center justify-center gap-3 rounded-lg border border-gray-700 bg-gray-900/70 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-800/80">
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.5777 12.2542C22.5777 11.4458 22.5073 10.6558 22.3822 9.88416H12.2344V14.2883H18.1462C17.8622 15.7608 17.0238 16.9933 15.7913 17.8642V20.6275H19.6462C21.5847 18.89 22.5777 15.8958 22.5777 12.2542Z" fill="#4285F4"></path><path d="M12.2344 23.0008C15.1929 23.0008 17.7021 22.0358 19.6462 20.6275L15.7913 17.8642C14.8344 18.5142 13.621 18.9192 12.2344 18.9192C9.52852 18.9192 7.21102 17.1358 6.36018 14.755H2.38516V17.6042C4.30599 20.7358 7.99018 23.0008 12.2344 23.0008Z" fill="#34A853"></path><path d="M6.36018 14.755C6.13852 14.105 6.00268 13.4142 6.00268 12.7008C6.00268 11.9875 6.13852 11.2967 6.36018 10.6467V7.7975H2.38516C1.53434 9.4975 1 11.0317 1 12.7008C1 14.37 1.53434 15.9042 2.38516 17.6042L6.36018 14.755Z" fill="#FBBC05"></path><path d="M12.2344 6.4825C13.7238 6.4825 15.2571 7.0275 16.3652 8.085L19.7152 4.735C17.7021 2.845 15.1929 1.875 12.2344 1.875C7.99018 1.875 4.30599 4.14 2.38516 7.7975L6.36018 10.6467C7.21102 8.26667 9.52852 6.4825 12.2344 6.4825Z" fill="#EA4335"></path></svg>
+                            Sign up with Google
                         </button>
                     </div>
-                </form>
-                <p class="text-center text-sm text-gray-400">
-                    Already have an account?
-                    <a class="font-medium text-[var(--primary-400)] hover:text-[var(--primary-300)]"
-                        href="SignInPage.html">Log In</a>
-                </p>
+
+                    <p class="mt-8 text-center text-sm text-gray-400">
+                        Already have an account?
+                        <a class="font-medium text-[var(--primary-400)] hover:text-[var(--primary-300)]"
+                            href="SignInPage.html">Log In</a>
+                    </p>
+                </div>
+
+                <div id="success-message" class="hidden text-center">
+                     <h2 class="text-3xl font-bold tracking-tight text-[var(--primary-400)] sm:text-4xl">Account Created!</h2>
+                     <p class="mt-4 text-lg text-gray-400">Welcome aboard! Redirecting you to your new dashboard...</p>
+                </div>
+
             </div>
         </main>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- AVATAR UPLOAD SCRIPT ---
+            const signupContainer = document.getElementById('signup-container');
+            const successMessage = document.getElementById('success-message');
+            const signupForm = document.getElementById('signup-form');
+            const inputs = {
+                fullName: document.getElementById('full-name'),
+                email: document.getElementById('email'),
+                password: document.getElementById('password'),
+                confirmPassword: document.getElementById('confirm-password'),
+                terms: document.getElementById('terms'),
+            };
+            const passwordToggles = document.querySelectorAll('.password-toggle');
+            const signupButton = document.getElementById('signup-button');
+            const buttonText = document.getElementById('button-text');
+            const buttonSpinner = document.getElementById('button-spinner');
+
+            // --- AVATAR UPLOAD ---
             const avatarUpload = document.getElementById('avatar-upload');
             const avatarPreview = document.getElementById('avatar-preview');
-
             avatarUpload.addEventListener('change', (event) => {
                 const file = event.target.files[0];
                 if (file) {
                     const reader = new FileReader();
-                    reader.onload = (e) => {
-                        avatarPreview.src = e.target.result;
-                    };
+                    reader.onload = (e) => { avatarPreview.src = e.target.result; };
                     reader.readAsDataURL(file);
                 }
             });
 
-            // --- PASSWORD VALIDATION SCRIPT ---
-            const passwordInput = document.getElementById('password');
+            // --- PASSWORD VISIBILITY ---
+            passwordToggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const input = toggle.previousElementSibling;
+                    const icon = toggle.querySelector('.material-symbols-outlined');
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                        icon.textContent = 'visibility';
+                    } else {
+                        input.type = 'password';
+                        icon.textContent = 'visibility_off';
+                    }
+                });
+            });
+
+            // --- REAL-TIME VALIDATION ---
             const rules = {
-                length: { element: document.getElementById('rule-length'), regex: /.{8,}/ },
-                uppercase: { element: document.getElementById('rule-uppercase'), regex: /[A-Z]/ },
-                lowercase: { element: document.getElementById('rule-lowercase'), regex: /[a-z]/ },
-                number: { element: document.getElementById('rule-number'), regex: /[0-9]/ },
-                special: { element: document.getElementById('rule-special'), regex: /[^A-Za-z0-9]/ }
+                length: { el: document.getElementById('rule-length'), regex: /.{8,}/, met: false },
+                uppercase: { el: document.getElementById('rule-uppercase'), regex: /[A-Z]/, met: false },
+                lowercase: { el: document.getElementById('rule-lowercase'), regex: /[a-z]/, met: false },
+                number: { el: document.getElementById('rule-number'), regex: /[0-9]/, met: false },
+                special: { el: document.getElementById('rule-special'), regex: /[^A-Za-z0-9]/, met: false },
+                match: { el: document.getElementById('rule-match'), met: false }
             };
 
-            passwordInput.addEventListener('input', () => {
-                const password = passwordInput.value;
-                for (const ruleName in rules) {
-                    const { element, regex } = rules[ruleName];
-                    const icon = element.querySelector('.rule-icon');
-                    const text = element.querySelector('.rule-text');
+            const checkFormValidity = () => {
+                const isPasswordStrong = Object.values(rules).every(rule => rule.met);
+                const allFieldsFilled = inputs.fullName.value && inputs.email.value && inputs.terms.checked;
+                signupButton.disabled = !(isPasswordStrong && allFieldsFilled);
+            };
 
-                    if (regex.test(password)) {
-                        element.classList.remove('text-gray-500');
-                        element.classList.add('text-[var(--primary-400)]');
-                        icon.textContent = 'check_circle';
-                    } else {
-                        element.classList.add('text-gray-500');
-                        element.classList.remove('text-[var(--primary-400)]');
-                        icon.textContent = 'cancel';
+            const validatePasswordRules = () => {
+                const password = inputs.password.value;
+                for (const ruleName in rules) {
+                    if (rules[ruleName].regex) {
+                        const { el, regex } = rules[ruleName];
+                        const icon = el.querySelector('.rule-icon');
+                        if (regex.test(password)) {
+                            el.classList.remove('text-gray-500');
+                            el.classList.add('text-[var(--primary-400)]');
+                            icon.textContent = 'check_circle';
+                            rules[ruleName].met = true;
+                        } else {
+                            el.classList.add('text-gray-500');
+                            el.classList.remove('text-[var(--primary-400)]');
+                            icon.textContent = 'cancel';
+                            rules[ruleName].met = false;
+                        }
                     }
                 }
+                validatePasswordMatch();
+                checkFormValidity();
+            };
+
+            const validatePasswordMatch = () => {
+                const { el } = rules.match;
+                const icon = el.querySelector('.material-symbols-outlined');
+                const text = el.querySelector('span:last-child');
+                if (inputs.confirmPassword.value) {
+                    el.classList.remove('hidden');
+                    if (inputs.confirmPassword.value === inputs.password.value && inputs.password.value.length > 0) {
+                        el.classList.remove('text-red-400');
+                        el.classList.add('text-[var(--primary-400)]');
+                        icon.textContent = 'check_circle';
+                        text.textContent = 'Passwords match';
+                        rules.match.met = true;
+                    } else {
+                        el.classList.remove('text-[var(--primary-400)]');
+                        el.classList.add('text-red-400');
+                        icon.textContent = 'cancel';
+                        text.textContent = 'Passwords do not match';
+                        rules.match.met = false;
+                    }
+                } else {
+                    el.classList.add('hidden');
+                    rules.match.met = false;
+                }
+                checkFormValidity();
+            };
+
+            // Attach event listeners for live validation
+            Object.values(inputs).forEach(input => input.addEventListener('input', checkFormValidity));
+            inputs.password.addEventListener('input', validatePasswordRules);
+            inputs.confirmPassword.addEventListener('input', validatePasswordMatch);
+
+            // --- FORM SUBMISSION ---
+            signupForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (signupButton.disabled) return;
+
+                buttonText.textContent = 'Creating Account...';
+                buttonSpinner.classList.remove('hidden');
+                signupButton.disabled = true;
+
+                // Simulate network request
+                setTimeout(() => {
+                    signupContainer.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                    
+                    // Redirect after showing success message
+                    setTimeout(() => {
+                        window.location.href = '../Dashboard/ProjectDashboardPage.html'; // Or your desired page
+                    }, 2500);
+                }, 1500);
             });
         });
     </script>
