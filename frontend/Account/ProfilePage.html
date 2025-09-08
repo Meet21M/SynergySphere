@@ -3,10 +3,11 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>SynergySphere - Settings</title>
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+    <title>SynergySphere - Edit Profile</title>
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link as="style"
+        href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&family=Spline+Sans%3Awght%40400%3B500%3B700"
+        onload="this.rel='stylesheet'" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style type="text/tailwindcss">
@@ -27,13 +28,18 @@
         body {
             font-family: "Spline Sans", sans-serif;
         }
+        
+        .form-input {
+             @apply w-full rounded-lg border-gray-700 bg-gray-900/70 py-3 text-white placeholder:text-gray-500 focus:border-[var(--primary-400)] focus:ring-[var(--primary-400)];
+        }
     </style>
 </head>
 
-<body class="bg-gray-900 text-white antialiased">
-    <div class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
+<body class="bg-gray-900 antialiased">
+    <div class="relative flex size-full min-h-screen flex-col text-white group/design-root overflow-x-hidden">
         <div class="layout-container flex h-full grow flex-col">
-            <header class="sticky top-0 z-30 flex items-center justify-between whitespace-nowrap border-b border-gray-800 bg-gray-900/80 px-4 py-3 sm:px-10 backdrop-blur-sm">
+            <header
+                class="sticky top-0 z-30 flex items-center justify-between whitespace-nowrap border-b border-gray-800 bg-gray-900/80 px-4 py-3 sm:px-10 backdrop-blur-sm">
                 <a class="flex items-center gap-3 text-white" href="../Dashboard/ProjectDashboardPage.html">
                     <svg class="h-7 w-7 text-primary-400" fill="none" viewBox="0 0 48 48"
                         xmlns="http://www.w3.org/2000/svg">
@@ -43,32 +49,12 @@
                     </svg>
                     <h2 class="text-xl font-bold tracking-tight">SynergySphere</h2>
                 </a>
-                
-                
-                
                 <div class="flex items-center justify-end gap-4">
                     <div class="hidden md:flex items-center gap-4">
-                        <a class="text-gray-400 hover:text-white text-sm font-medium leading-normal transition-colors" href="../Dashboard/ProjectDashboardPage.html">Go to Dashboard</a>
-                        <label class="relative hidden sm:block">
-                            <span class="sr-only">Search</span>
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                                <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 256 256"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z">
-                                    </path>
-                                </svg>
-                            </span>
-                            <input
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-full bg-gray-800 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/50 border-transparent h-10 pl-10 pr-4 text-sm font-normal leading-normal"
-                                placeholder="Search" value="" />
-                        </label>
-                        <button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-2xl">notifications</span>
-                        </button>
-                        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
-                            style='background-image: url("https://i.pravatar.cc/40?u=sophiacarter");'>
-                        </div>
+                        <a class="text-gray-400 hover:text-white text-sm font-medium leading-normal transition-colors"
+                            href="../Dashboard/ProjectDashboardPage.html">Go to Dashboard</a>
+                        <img class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+                            src="https://i.pravatar.cc/40?u=sophiacarter" alt="User Avatar" />
                     </div>
                     <button id="open-menu-btn"
                         class="flex md:hidden h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
@@ -87,102 +73,112 @@
                         <span class="material-symbols-outlined">close</span>
                     </button>
                 </div>
-                <div class="flex flex-col flex-grow p-4 space-y-4">
-                    <label class="relative">
-                        <span class="sr-only">Search</span>
-                        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                            <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 256 256"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z">
-                                </path>
-                            </svg>
-                        </span>
-                        <input
-                            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-full bg-gray-900 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/50 border-transparent h-10 pl-10 pr-4 text-sm font-normal leading-normal"
-                            placeholder="Search" value="" />
-                    </label>
-                    <button
-                        class="flex w-full items-center gap-3 rounded-lg p-3 text-left text-base font-medium text-gray-300 transition-colors hover:bg-gray-700 hover:text-white">
-                        <span class="material-symbols-outlined text-2xl">notifications</span>
-                        <span>Notifications</span>
-                    </button>
-                    <hr class="border-gray-700" />
-                    <nav class="flex flex-col gap-2">
-                        <a class="rounded-lg px-3 py-2 text-base font-medium text-gray-300 transition-colors hover:bg-gray-700 hover:text-white" href="../Dashboard/ProjectDashboardPage.html">Go to Dashboard</a>
-                    </nav>
                 </div>
-                <div class="border-t border-gray-700 p-4">
-                    <div class="flex items-center gap-4 rounded-lg">
-                        <div class="h-12 w-12 flex-shrink-0 rounded-full bg-cover bg-center" style='background-image: url("https://i.pravatar.cc/48?u=sophiacarter");'></div>
-                        <div>
-                            <p class="font-bold text-white">Sophia Carter</p>
-                            <a href="#" class="text-sm text-gray-400 hover:text-primary-400 hover:underline">View Profile & Settings</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <main class="flex-1 px-4 sm:px-6 lg:px-8 py-10">
-                <div class="mx-auto max-w-2xl">
-                    <div class="bg-gray-800/50 rounded-2xl shadow-2xl p-8 backdrop-blur-sm">
-                        <div class="text-center mb-8">
-                            <h1 class="text-4xl font-bold text-white tracking-tight">Profile & Settings</h1>
-                        </div>
-                        <div class="flex flex-col items-center gap-6 mb-10">
-                            <div class="relative">
-                                <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-32 h-32"
-                                    style='background-image: url("https://i.pravatar.cc/128?u=sophiacarter");'></div>
-                                <button
-                                    class="absolute bottom-0 right-0 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--primary-500)] text-white transition-colors hover:bg-[var(--primary-600)]">
-                                    <span class="sr-only">Edit profile picture</span>
-                                    <span class="material-symbols-outlined text-xl"> edit </span>
-                                </button>
+                <div class="mx-auto max-w-4xl">
+                    <div class="text-center mb-10">
+                        <h1 class="text-4xl font-bold text-white tracking-tight">Profile & Settings</h1>
+                    </div>
+                    <div class="bg-gray-800/50 rounded-2xl shadow-2xl backdrop-blur-sm">
+                        <div class="p-4 sm:p-8">
+                            <div class="border-b border-gray-700">
+                                <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                                    <button data-tab="profile" class="tab-btn whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium border-primary-500 text-primary-400">Profile</button>
+                                    <button data-tab="security" class="tab-btn whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium border-transparent text-gray-400 hover:border-gray-500 hover:text-gray-300">Security</button>
+                                    <button data-tab="notifications" class="tab-btn whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium border-transparent text-gray-400 hover:border-gray-500 hover:text-gray-300">Notifications</button>
+                                </nav>
                             </div>
-                            <div class="text-center">
-                                <p class="text-2xl font-bold text-white">Sophia Carter</p>
-                                <p class="text-base text-gray-400">sophia.carter@email.com</p>
+                            
+                            <div class="pt-8">
+                                <div id="profile-tab" class="tab-content">
+                                    <form id="profile-form" class="space-y-6">
+                                        <div class="flex flex-col items-center gap-6">
+                                            <div class="relative">
+                                                <img id="avatar-preview" class="rounded-full size-32 object-cover ring-2 ring-gray-700" src="https://i.pravatar.cc/128?u=sophiacarter" alt="Current profile photo" />
+                                                <label for="avatar-upload" class="absolute bottom-0 right-0 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-primary-500 text-white transition-colors hover:bg-primary-600">
+                                                    <span class="sr-only">Change profile picture</span>
+                                                    <span class="material-symbols-outlined text-xl">photo_camera</span>
+                                                </label>
+                                                <input type="file" id="avatar-upload" class="hidden" accept="image/*">
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-300" for="name">Name</label>
+                                                <input class="form-input mt-1" id="name" type="text" value="Sophia Carter" />
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-300" for="email">Email</label>
+                                                <input class="form-input mt-1" id="email" type="email" value="sophia.carter@email.com" />
+                                            </div>
+                                        </div>
+                                        <div class="pt-2 flex justify-end">
+                                            <button id="save-profile-btn" type="submit" disabled class="flex items-center justify-center rounded-full bg-primary-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary-600 disabled:opacity-50 disabled:cursor-not-allowed">
+                                                <span id="save-profile-btn-text">Save Changes</span>
+                                                <svg id="save-profile-spinner" class="hidden h-5 w-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div id="security-tab" class="tab-content hidden">
+                                    <form id="password-form" class="space-y-6">
+                                        <h2 class="text-2xl font-bold text-white">Change Password</h2>
+                                        <div class="relative">
+                                             <label class="block text-sm font-medium text-gray-300" for="current-password">Current Password</label>
+                                             <input class="form-input mt-1 pr-10" id="current-password" type="password" />
+                                             <button type="button" class="password-toggle absolute top-9 right-0 flex items-center pr-3 text-gray-400 hover:text-white"><span class="material-symbols-outlined text-xl">visibility_off</span></button>
+                                        </div>
+                                        <div class="relative">
+                                             <label class="block text-sm font-medium text-gray-300" for="new-password">New Password</label>
+                                             <input class="form-input mt-1 pr-10" id="new-password" type="password" />
+                                             <button type="button" class="password-toggle absolute top-9 right-0 flex items-center pr-3 text-gray-400 hover:text-white"><span class="material-symbols-outlined text-xl">visibility_off</span></button>
+                                        </div>
+                                        <div id="password-rules" class="pt-2 text-xs text-gray-500 space-y-1"></div>
+                                         <div class="relative">
+                                             <label class="block text-sm font-medium text-gray-300" for="confirm-new-password">Confirm New Password</label>
+                                             <input class="form-input mt-1 pr-10" id="confirm-new-password" type="password" />
+                                             <button type="button" class="password-toggle absolute top-9 right-0 flex items-center pr-3 text-gray-400 hover:text-white"><span class="material-symbols-outlined text-xl">visibility_off</span></button>
+                                        </div>
+                                        <div class="pt-2 flex justify-end">
+                                            <button id="save-password-btn" type="submit" class="flex items-center justify-center rounded-full bg-primary-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary-600">
+                                                 <span id="save-password-btn-text">Change Password</span>
+                                                 <svg id="save-password-spinner" class="hidden h-5 w-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <div class="border-t border-gray-700 mt-10 pt-8">
+                                        <h2 class="text-2xl font-bold text-red-500">Danger Zone</h2>
+                                        <div class="mt-4 rounded-lg border border-red-800/50 bg-red-900/10 p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                                            <div>
+                                                <h3 class="font-bold text-white">Delete this account</h3>
+                                                <p class="text-sm text-gray-400">Once you delete your account, there is no going back. Please be certain.</p>
+                                            </div>
+                                            <button id="open-delete-modal-btn" class="flex-shrink-0 rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 transition-colors">Delete Account...</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                 <div id="notifications-tab" class="tab-content hidden">
+                                    <h2 class="text-2xl font-bold text-white mb-6">Notifications</h2>
+                                     <div class="space-y-6">
+                                         <div class="flex items-center justify-between">
+                                             <div class="flex flex-col"><p class="text-base font-medium text-white">Task Assignments</p><p class="text-sm text-gray-400">Receive notifications for new tasks assigned to you.</p></div>
+                                             <label class="relative inline-flex items-center cursor-pointer"><input class="sr-only peer" type="checkbox" value="" /><div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--primary-500)]"></div></label>
+                                         </div>
+                                         <div class="flex items-center justify-between">
+                                             <div class="flex flex-col"><p class="text-base font-medium text-white">Task Updates</p><p class="text-sm text-gray-400">Get notified when a task you're involved in is updated.</p></div>
+                                             <label class="relative inline-flex items-center cursor-pointer"><input checked class="sr-only peer" type="checkbox" value="" /><div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--primary-500)]"></div></label>
+                                         </div>
+                                     </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="border-t border-gray-700 pt-8">
-                            <h2 class="text-2xl font-bold text-white mb-6">Notifications</h2>
-                            <div class="space-y-6">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex flex-col">
-                                        <p class="text-base font-medium text-white">Task Assignments</p>
-                                        <p class="text-sm text-gray-400">Receive notifications for new tasks assigned to you.</p>
-                                    </div>
-                                    <label class="relative inline-flex items-center cursor-pointer">
-                                        <input class="sr-only peer" type="checkbox" value="" />
-                                        <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--primary-500)]"></div>
-                                    </label>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex flex-col">
-                                        <p class="text-base font-medium text-white">Task Updates</p>
-                                        <p class="text-sm text-gray-400">Get notified when a task you're involved in is updated.</p>
-                                    </div>
-                                    <label class="relative inline-flex items-center cursor-pointer">
-                                        <input checked="" class="sr-only peer" type="checkbox" value="" />
-                                        <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--primary-500)]"></div>
-                                    </label>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex flex-col">
-                                        <p class="text-base font-medium text-white">Project Deadlines</p>
-                                        <p class="text-sm text-gray-400">Receive alerts for upcoming project deadlines.</p>
-                                    </div>
-                                    <label class="relative inline-flex items-center cursor-pointer">
-                                        <input class="sr-only peer" type="checkbox" value="" />
-                                        <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--primary-500)]"></div>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-t border-gray-700 mt-10 pt-8 flex justify-end">
-                            <button class="flex items-center gap-2 min-w-[84px] cursor-pointer justify-center rounded-md h-10 px-4 bg-gray-700/50 text-gray-300 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-red-800/50 hover:text-red-400 transition-colors">
-                                <span class="material-symbols-outlined"> logout </span>
-                                <span class="truncate">Log Out</span>
+                        <div class="border-t border-gray-700 mt-8 p-4 sm:px-8 sm:py-6 flex justify-end">
+                            <button class="flex items-center gap-2 rounded-md bg-gray-700 px-4 h-10 text-sm font-semibold text-gray-300 transition-colors hover:bg-red-600 hover:text-white">
+                                <span class="material-symbols-outlined">logout</span>
+                                <span>Log Out</span>
                             </button>
                         </div>
                     </div>
@@ -190,35 +186,139 @@
             </main>
         </div>
     </div>
-     <script>
+    
+    <div id="delete-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+        <div class="w-full max-w-md rounded-2xl bg-gray-800 p-8 shadow-2xl">
+            <h2 class="text-2xl font-bold text-red-500">Are you absolutely sure?</h2>
+            <p class="mt-2 text-gray-400">This action cannot be undone. This will permanently delete your account. To confirm, please type <strong class="text-white">DELETE</strong> below.</p>
+            <div class="mt-6">
+                <label for="delete-confirm" class="sr-only">Confirm by typing DELETE</label>
+                <input id="delete-confirm" type="text" class="form-input" placeholder="DELETE">
+            </div>
+            <div class="mt-6 flex justify-end space-x-4">
+                <button id="cancel-delete-btn" class="rounded-md bg-gray-600 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-500 transition-colors">Cancel</button>
+                <button id="confirm-delete-btn" class="rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-red-500 disabled:opacity-50 disabled:cursor-not-allowed" disabled>Delete Account</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="fixed top-5 right-5 z-50 hidden items-center gap-3 rounded-lg bg-primary-500 p-4 text-white shadow-lg transition-transform duration-300 translate-x-[150%]">
+        <span class="material-symbols-outlined">check_circle</span>
+        <span id="toast-message"></span>
+    </div>
+
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Mobile Menu Toggle Script ---
+            // --- Mobile Menu ---
             const openMenuBtn = document.getElementById('open-menu-btn');
             const closeMenuBtn = document.getElementById('close-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             const menuOverlay = document.getElementById('menu-overlay');
+            const openMenu = () => { mobileMenu.classList.remove('translate-x-full'); menuOverlay.classList.remove('hidden'); };
+            const closeMenu = () => { mobileMenu.classList.add('translate-x-full'); menuOverlay.classList.add('hidden'); };
+            openMenuBtn?.addEventListener('click', openMenu);
+            closeMenuBtn?.addEventListener('click', closeMenu);
+            menuOverlay?.addEventListener('click', closeMenu);
 
-            const openMenu = () => {
-                mobileMenu.classList.remove('translate-x-full');
-                menuOverlay.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
+            // --- Tabs ---
+            const tabs = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('border-primary-500', 'text-primary-400') || t.classList.add('border-transparent', 'text-gray-400', 'hover:border-gray-500', 'hover:text-gray-300'));
+                    tab.classList.add('border-primary-500', 'text-primary-400');
+                    tab.classList.remove('border-transparent', 'text-gray-400', 'hover:border-gray-500', 'hover:text-gray-300');
+                    tabContents.forEach(content => content.classList.add('hidden'));
+                    document.getElementById(`${tab.dataset.tab}-tab`).classList.remove('hidden');
+                });
+            });
+
+            // --- Toast Notification ---
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            const showToast = (message) => {
+                toastMessage.textContent = message;
+                toast.classList.remove('hidden', 'translate-x-[150%]');
+                setTimeout(() => toast.classList.add('translate-x-[150%]'), 3000);
             };
 
-            const closeMenu = () => {
-                mobileMenu.classList.add('translate-x-full');
-                menuOverlay.classList.add('hidden');
-                document.body.style.overflow = '';
-            };
+            // --- Profile Tab ---
+            const profileForm = document.getElementById('profile-form');
+            const saveProfileBtn = document.getElementById('save-profile-btn');
+            const avatarUpload = document.getElementById('avatar-upload');
+            const avatarPreview = document.getElementById('avatar-preview');
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
 
-            if (openMenuBtn) {
-                openMenuBtn.addEventListener('click', openMenu);
-            }
-            if (closeMenuBtn) {
-                closeMenuBtn.addEventListener('click', closeMenu);
-            }
-            if (menuOverlay) {
-                menuOverlay.addEventListener('click', closeMenu);
-            }
+            const initialProfileState = { name: nameInput.value, email: emailInput.value };
+            const checkProfileChanges = () => {
+                const nameChanged = nameInput.value !== initialProfileState.name;
+                const emailChanged = emailInput.value !== initialProfileState.email;
+                saveProfileBtn.disabled = !(nameChanged || emailChanged);
+            };
+            
+            [nameInput, emailInput].forEach(el => el.addEventListener('input', checkProfileChanges));
+            
+            avatarUpload.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    avatarPreview.src = URL.createObjectURL(file);
+                    saveProfileBtn.disabled = false;
+                }
+            });
+
+            profileForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btnText = document.getElementById('save-profile-btn-text');
+                const spinner = document.getElementById('save-profile-spinner');
+                btnText.textContent = 'Saving...';
+                spinner.classList.remove('hidden');
+                saveProfileBtn.disabled = true;
+
+                setTimeout(() => {
+                    btnText.textContent = 'Save Changes';
+                    spinner.classList.add('hidden');
+                    showToast('Profile saved successfully!');
+                    // Update initial state
+                    initialProfileState.name = nameInput.value;
+                    initialProfileState.email = emailInput.value;
+                    checkProfileChanges();
+                }, 1500);
+            });
+
+            // --- Security Tab ---
+            const openDeleteModalBtn = document.getElementById('open-delete-modal-btn');
+            const deleteModal = document.getElementById('delete-modal');
+            const cancelDeleteBtn = document.getElementById('cancel-delete-btn');
+            const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
+            const deleteConfirmInput = document.getElementById('delete-confirm');
+
+            openDeleteModalBtn.addEventListener('click', () => deleteModal.classList.replace('hidden', 'flex'));
+            const closeModal = () => {
+                deleteModal.classList.replace('flex', 'hidden');
+                deleteConfirmInput.value = '';
+                confirmDeleteBtn.disabled = true;
+            };
+            cancelDeleteBtn.addEventListener('click', closeModal);
+            
+            deleteConfirmInput.addEventListener('input', () => {
+                confirmDeleteBtn.disabled = deleteConfirmInput.value !== 'DELETE';
+            });
+            
+             // Password visibility toggles
+             document.querySelectorAll('.password-toggle').forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const input = toggle.closest('.relative').querySelector('input');
+                    const icon = toggle.querySelector('.material-symbols-outlined');
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                        icon.textContent = 'visibility';
+                    } else {
+                        input.type = 'password';
+                        icon.textContent = 'visibility_off';
+                    }
+                });
+            });
         });
     </script>
 </body>
